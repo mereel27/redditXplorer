@@ -1,7 +1,7 @@
 .Main {
     display: flex;
     flex-direction: column;
-    margin: 2vh calc(10px + 0.5vmin) 0 calc(10px + 0.5vmin);
+    margin: 3vmin calc(10px + 0.5vmin) 0 calc(10px + 0.5vmin);
 }
 
 .categories, .toplist {
@@ -48,11 +48,6 @@
     font-weight: 600;
 }
 
-#arrow {
-    color: grey;
-    margin-right: 2%;
-}
-
 .icon {
     width: 2em;
     height: 2em;
@@ -89,30 +84,72 @@
     background-image: url('http://localhost:3000/img/videos.jpg');
 }
 
-.nav-container {
+.nav-container, .search-container {
     width: 100%;
     background-color: white;
-    margin-bottom: 2vh;
-    height: 6vh;
+    margin-bottom: 3vmin;
+    height: calc(5px + 10vmin);
     border-radius: 10px;
+    max-height: 80px;
 }
 
 nav {
     display: flex;
     height: 100%;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
   
 nav span {
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 500;
     border-radius: 10px;
+    font-size: calc(12px + 2vmin);
 }
   
  nav span:hover{
     cursor: pointer;
+}
+
+form {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    font-size: calc(15px + 1vmin);
+    padding-left: 2vmin;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    width: calc(50px + 3vmin);
+    height: 100%;
+    background-image: url('http://192.168.0.112:3000/img/search.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #e4e4e4;
+}
+
+@media screen and (min-width: 1024px) {
+    .Main {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 }

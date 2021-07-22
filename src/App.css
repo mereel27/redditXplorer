@@ -1,15 +1,13 @@
-.App {
-  
-}
-
 .App-logo {
-  height: 100%;
+  height: fit-content;
   pointer-events: none;
+  max-width: 100%;
 }
 
 .logo-container {
-  padding: 1vh 0;
-  height: 100%;
+  display: flex;
+  height: auto;
+  max-height: 100px;
   width: fit-content;
   margin: 0 auto;
 }
@@ -21,7 +19,7 @@
 } */
 
 .App-header {
-  height: 10vh;
+  height: 20%;
   font-size: calc(10px + 2vmin);
   background-color: white;
   margin: 0;
@@ -42,8 +40,3 @@
     transform: translateY(0px);
   }
 }
-
-form {
-  padding-right: 5vh;
-}
-

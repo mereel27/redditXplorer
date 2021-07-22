@@ -83,12 +83,9 @@
     justify-content: center;
 }
 
-.comment-info {
-    cursor: pointer;
-}
-
 .comment-info:hover {
     background-color: #e4e4e4;
+    cursor: pointer;
 }
 
 .yt-player {

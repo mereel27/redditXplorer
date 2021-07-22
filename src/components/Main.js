@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import './Main.css';
-import { selectPosts, fetchPosts } from '../store/redditPost/redditPostSlice';
+import { selectPosts, fetchPosts, fetchSearchResults, setSearchTerm, selectSearchTerm } from '../store/redditPost/redditPostSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPostData, showComments, setPostId } from '../store/redditComments/redditCommentsSlice';
+import { fetchPostData, showComments, setPostId, setShowComments } from '../store/redditComments/redditCommentsSlice';
 import { Topics } from './Topics/Topics';
 import { Comments } from '../store/redditComments/redditComments';
 import { selectedCategory } from '../store/redditPost/redditPostSlice';
@@ -13,6 +13,7 @@ const Main = ({onClick}) => {
     const dispatch = useDispatch();
     const isComments = useSelector(showComments);
     const category = useSelector(selectedCategory);
+    const term = useSelector(selectSearchTerm);
 
     useEffect(()=> {
         dispatch(fetchPosts(category));
@@ -27,9 +28,21 @@ const Main = ({onClick}) => {
         }
     }
 
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        await dispatch(fetchSearchResults(term));
+        dispatch(setShowComments());
+    };
+    
+    const handleChange = (e) => {
+        dispatch(setSearchTerm(e.target.value));
+    }
+
     const getVideoUrl = (link) => {
         return `https://youtube.com/embed/${link.match(/(https?:\/\/(www\.)?[^ &]*)/)[0].slice(-11)}`
     }
+
+    
 
     return (
         <div className ='Main'>
@@ -44,15 +57,25 @@ const Main = ({onClick}) => {
                     <li onClick={onClick} id='/r/videos'><i id='videos' class='icon'></i>videos</li>
                 </ul>
             </div> */}
+
+
             <div className='nav-container'>
                     <nav>
-                        <span id='/top' onClick={onClick}>TOP</span>
-                        <span id='/r/popular' onClick={onClick}>POPULAR</span>
-                        <span id='/r/all' onClick={onClick}>ALL</span>
-                        <span id='/new' onClick={onClick}>NEW</span>
-                        <span>FAVOURITE</span>
+                        <span id='/top' onClick={onClick}>Top</span>
+                        <span id='/r/popular' onClick={onClick}>Popular</span>
+                        <span id='/r/all' onClick={onClick}>All</span>
+                        <span id='/new' onClick={onClick}>New</span>
+                        <span>Favourite</span>
                     </nav>
                 </div>
+
+            <div className='search-container'>
+            <form onSubmit={handleSearch}>
+                <input type='text' placeholder='Search...' onChange={handleChange} value={term} />
+                <button type='submit'></button>
+            </form>
+            </div>
+
             <div className='content-box'>
                 {isComments ? 
                 <Comments 
