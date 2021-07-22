@@ -1,0 +1,43 @@
+.post-box {
+    width: 100%;
+    margin: 2% 0;
+    border: 1px solid rgb(207, 207, 207);
+    background-color: white;
+}
+
+.comments-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(207, 207, 207);
+    background-color: white;
+}
+
+.comment {
+    width: 100%;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1%;
+}
+
+.comment .author {
+    font-size: calc(5px + 0.5vmin);
+    color: orangered;
+    display: flex;
+    align-items: center;
+}
+
+.comment .avatar {
+    border: 1px solid transparent;
+    border-radius: 50%;
+    image-resolution: 100%;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.post-box video {
+    max-height: 50vh;
+    max-width: fit-content;
+}
