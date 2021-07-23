@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactPlayer from 'react-player/lazy';
+import avatar from '../../img/avatar.svg';
+import comments from '../../img/comment.svg';
+import votes from '../../img/vote.svg';
 
 export const TopicCard = ({index, post, getVideoUrl, handleClick, isComments}) => {
 
@@ -7,7 +10,7 @@ export const TopicCard = ({index, post, getVideoUrl, handleClick, isComments}) =
         <div key={index} className ='topic-box'>
 
         <div className='post-author'>
-            <img className='avatar' src='./img/avatar.svg' alt='' loading='lazy'/>
+            <img className='avatar' src={avatar} alt='' loading='lazy'/>
             <span>{post.author}</span>
         </div>
 
@@ -57,11 +60,11 @@ export const TopicCard = ({index, post, getVideoUrl, handleClick, isComments}) =
         </div>
         <div className='info' onClick={() => handleClick(post.permalink, index)}>
             <div className={isComments ? 'comment-info-off' : 'comment-info'}>
-                <img src='./img/comment.svg' alt=''/>
+                <img src={comments} alt=''/>
                 <span>{post.num_comments} comments</span>
             </div>
             <div className='upvote-info'>
-                <img src='./img/vote.svg' alt=''/>
+                <img src={votes} alt=''/>
                 <span>{post.ups} upvotes</span>
             </div>
         </div>

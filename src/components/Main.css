@@ -57,31 +57,31 @@
 }
 
 #funny {
-    background-image: url('http://localhost:3000/img/funny.png');
+    background-image: url('../img/funny.png');
 }
 
 #ask {
-    background-image: url('http://localhost:3000/img/ask.png');
+    background-image: url('../img/ask.png');
 }
 
 #gaming {
-    background-image: url('http://localhost:3000/img/gaming.png');
+    background-image: url('../img/gaming.png');
 }
 
 #aww {
-    background-image: url('http://localhost:3000/img/aww.png');
+    background-image: url('../img/aww.png');
 }
 
 #pics {
-    background-image: url('http://localhost:3000/img/pics.png');
+    background-image: url('../img/pics.png');
 }
 
 #music {
-    background-image: url('http://localhost:3000/img/music.png');
+    background-image: url('../img/music.png');
 }
 
 #videos {
-    background-image: url('http://localhost:3000/img/videos.jpg');
+    background-image: url('../img/videos.jpg');
 }
 
 .nav-container, .search-container {
@@ -134,7 +134,7 @@ input:focus {
 button {
     width: calc(50px + 3vmin);
     height: 100%;
-    background-image: url('http://192.168.0.112:3000/img/search.svg');
+    background-image: url('../img/search.svg');
     background-position: center;
     background-repeat: no-repeat;
     border: none;
