@@ -28,7 +28,7 @@ const Main = () => {
     }
 
     const getVideoUrl = (link) => {
-        return `https://youtube.com/embed/${link.match(/(https?:\/\/(www\.)?[^ &]*)/)[0].slice(-11)}`
+        return `https://www.youtube-nocookie.com/embed/${link.match(/(?:youtube(?:-nocookie)?\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/)[1]}`
     }
 
     const handleMoreClick = (e) => {

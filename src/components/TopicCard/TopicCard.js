@@ -40,22 +40,32 @@ export const TopicCard = ({
         {post.post_hint === 'link' && <a href={post.url}>{post.url}</a>}
 
         {post.is_video && (
-          <ReactPlayer
-            className="react-player"
-            url={post.media.reddit_video.dash_url}
-            controls={true}
-            volume={1}
-            width="100%"
-            height="fit-content"
-          />
+          <div
+            className="video-container"
+            style={{ '--aspect-ratio': '3 / 4' }}
+          >
+            <ReactPlayer
+              className="react-player"
+              url={post.media.reddit_video.dash_url}
+              controls={true}
+              volume={1}
+              width="100%"
+              height="100%"
+            />
+          </div>
         )}
 
         {post.url.includes('yout') && (
-          <ReactPlayer
-            className="yt-player"
-            url={getVideoUrl(post.url)}
-            controls={true}
-          />
+          <div className="yt-container">
+            <iframe
+              src={getVideoUrl(post.url)}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            ></iframe>
+          </div>
         )}
       </div>
       <div className="info" onClick={() => handleClick(post.permalink, index)}>
