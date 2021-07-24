@@ -58,6 +58,7 @@ export const redditSlice = createSlice({
             state.isLoading = false;
             state.error = false;
             state.posts = action.payload;
+            state.searchTerm = '';
         },
         [fetchSearchResults.rejected]: state => {
             state.isLoading = false;

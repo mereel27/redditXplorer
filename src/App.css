@@ -1,15 +1,85 @@
+.App-header {
+  display: flex;
+  height: calc(20px + 10vmin);
+  font-size: calc(10px + 2vmin);
+  background-color: white;
+  margin: 0;
+  align-items: center;
+  padding: 0 1vmin;
+  box-shadow: 0 0px 2px 1px #b1b1b1;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+@media screen and (min-width: 1024px) {
+    .App-header {
+        padding-left: 26%;
+        padding-right: 25%;
+        height: calc(20px + 6vmin);
+    }
+}
+
 .App-logo {
-  height: fit-content;
   pointer-events: none;
+  height: 100%;
   max-width: 100%;
 }
 
 .logo-container {
   display: flex;
-  height: auto;
-  max-height: 100px;
-  width: fit-content;
-  margin: 0 auto;
+  height: 100%;
+}
+
+.search-container {
+  width: 100%;
+  background-color: white;
+  height: 100%;
+  border-radius: 10px;
+  max-height: 80px;
+  margin-left: 1%;
+}
+
+form {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: calc(15px + 1vmin);
+  padding-left: 2vmin;
+  background-color: #eef0f2;
+  height: 50%;
+}
+
+input:focus {
+  outline: none;
+  /* border: 1px solid #ff4500; */
+  box-shadow: 0 0 4px 0px #ff440098;
+}
+
+button {
+  width: calc(50px + 3vmin);
+  height: 100%;
+  background-image: url('./img/search.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+button:active {
+  transform: scale(1);
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
@@ -18,12 +88,7 @@
   }
 } */
 
-.App-header {
-  height: 20%;
-  font-size: calc(10px + 2vmin);
-  background-color: white;
-  margin: 0;
-}
+
 
 .App-link {
   color: rgb(112, 76, 182);
