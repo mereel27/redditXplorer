@@ -71,4 +71,5 @@ export const { setPosts, setCategory, setSearchTerm } = redditSlice.actions;
 export const selectPosts = state => state.reddit.posts;
 export const selectSearchTerm = state => state.reddit.searchTerm;
 export const selectedCategory = state => state.reddit.selectedCategory;
+export const isLoading = state => state.reddit.isLoading;
 export default redditSlice.reducer;

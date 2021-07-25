@@ -70,6 +70,8 @@ button {
   border: none;
   background-color: transparent;
   border-radius: 10px;
+  color: transparent;
+  user-select: none;
 }
 
 button:hover {

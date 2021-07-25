@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import './Main.css';
-import { selectPosts, fetchPosts } from '../store/redditPost/redditPostSlice';
+import { selectPosts, fetchPosts, selectedCategory, setCategory } from '../store/redditPost/redditPostSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPostData, showComments, setPostId, setShowComments } from '../store/redditComments/redditCommentsSlice';
 import { Topics } from './Topics/Topics';
 import { Comments } from '../store/redditComments/redditComments';
-import { selectedCategory, setCategory } from '../store/redditPost/redditPostSlice';
 
 
 const Main = () => {

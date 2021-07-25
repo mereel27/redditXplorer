@@ -52,21 +52,22 @@
 }
 
 .post-author {
-    color: #777777;
+    color: #585858;
     display: flex;
     align-items: center;
 }
 
 .post-author span {
-    color: #777777;
+    color: #525252;
     font-size: calc(10px + 0.4vmin);
     margin-left: 1%;
 }
 
 
-.post-author img {
+.avatar {
     max-height: 2em;
     max-width: 2em;
+    border-radius: 50%;
 }
 
 .info {
@@ -74,7 +75,7 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    color: #777777;
+    color: #525252;
 }
 
 .info img {
