@@ -13,14 +13,6 @@
   justify-content: space-between;
 }
 
-@media screen and (min-width: 1024px) {
-    .App-header {
-        padding-left: 26%;
-        padding-right: 25%;
-        height: calc(20px + 6vmin);
-    }
-}
-
 .App-logo {
   pointer-events: none;
   height: 100%;
@@ -35,8 +27,8 @@
 .search-container {
   background-color: white;
   height: 100%;
-  border-radius: 10px;
   margin-left: 2%;
+  flex-grow: 1;
 }
 
 form {
@@ -47,9 +39,9 @@ form {
 
 input {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 2px;
   border: 1px solid transparent;
-  font-size: calc(15px + 1vmin);
+  font-size: calc(14px + 0.5vmin);
   padding-left: 2vmin;
   background-color: #eef0f2;
   height: 50%;
@@ -69,7 +61,6 @@ button {
   background-repeat: no-repeat;
   border: none;
   background-color: transparent;
-  border-radius: 10px;
   color: transparent;
   user-select: none;
 }
@@ -89,8 +80,6 @@ button:active {
   }
 } */
 
-
-
 .App-link {
   color: rgb(112, 76, 182);
 }
@@ -104,5 +93,17 @@ button:active {
   }
   100% {
     transform: translateY(0px);
+  }
+}
+
+
+@media screen and (min-width: 1024px) {
+  .App-header {
+      padding-left: 26%;
+      padding-right: 25%;
+      height: calc(20px + 6vmin);
+  }
+  .search-container {
+    flex-grow: 0;
   }
 }

@@ -60,14 +60,16 @@
 .post-author span {
     color: #525252;
     font-size: calc(10px + 0.4vmin);
-    margin-left: 1%;
+    margin-right: calc(5px + 1vmin);
 }
 
 
 .avatar {
-    max-height: 2em;
-    max-width: 2em;
+    height: 2rem;
+    width: 2rem;
     border-radius: 50%;
+    object-fit: cover;
+    margin-right: calc(5px + 0.5vmin);
 }
 
 .info {
@@ -85,7 +87,7 @@
 
 .comment-info, .comment-info-off, .upvote-info {
     border: 3px solid transparent;
-    border-radius: 8px;
+    border-radius: 2px;
     width: fit-content;
     padding: 1%;
     display: flex;

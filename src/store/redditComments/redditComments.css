@@ -9,8 +9,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgb(207, 207, 207);
     background-color: white;
+    box-shadow: 0 1px 2px 0 #b1b1b1;
 }
 
 .comment {
@@ -23,18 +23,12 @@
 }
 
 .comment .author {
-    font-size: calc(5px + 0.5vmin);
+    font-size: 12px;
     color: orangered;
     display: flex;
     align-items: center;
-}
-
-.comment .avatar {
-    border: 1px solid transparent;
-    border-radius: 50%;
-    image-resolution: 100%;
-    max-width: 40px;
-    max-height: 40px;
+    width: 100%;
+    margin-bottom: 1vmin;
 }
 
 .post-box video {

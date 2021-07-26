@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Main.css';
-import { selectPosts, fetchPosts, selectedCategory, setCategory } from '../store/redditPost/redditPostSlice';
+import { selectPosts, fetchPosts, selectedCategory } from '../store/redditPost/redditPostSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPostData, showComments, setPostId, setShowComments } from '../store/redditComments/redditCommentsSlice';
 import { Topics } from './Topics/Topics';
@@ -15,11 +15,13 @@ const Main = () => {
 
     useEffect(()=> {
         dispatch(fetchPosts(category));
-    }, [category, dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleCommentsClick = (permalink, index) => {
         if (!isComments) {
             dispatch(setPostId(index));
+            dispatch(setShowComments(true));
             dispatch(fetchPostData(permalink));
         } else {
             return;
@@ -31,12 +33,12 @@ const Main = () => {
     }
 
     const handleMoreClick = (e) => {
-        dispatch(setCategory(e.target.value));
+        dispatch(fetchPosts(e.target.value));
         dispatch(setShowComments(false));
     };
 
     const handleCategoryClick = (e) => {
-        dispatch(setCategory(e.target.id));
+        dispatch(fetchPosts(e.target.id));
         dispatch(setShowComments(false));
     };
 

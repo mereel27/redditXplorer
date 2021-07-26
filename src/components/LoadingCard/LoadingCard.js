@@ -1,11 +1,22 @@
 import React from 'react';
 import './LoadingCard.css';
 
-export const LoadingCard = () => {
-  return (
+export const LoadingCard = ({isComments}) => {
+  return isComments ? (
+    <div className='comment'>
+      <div className='author'>
+        <div className="avatar-loading loading"></div>
+        <div className="author-loading loading"></div>
+      </div>
+        <div className="content loading"></div>
+        <div className="content loading"></div>
+    </div> 
+    ) 
+    
+    : (
     <div className="topic-box" style={{padding: '2%'}}>
       <div className="post-author">
-        <div className="avatar-loading loading" />
+        <div className="avatar-loading loading"></div>
         <div className="author-loading loading"></div>
       </div>
 
@@ -23,5 +34,5 @@ export const LoadingCard = () => {
         <div className="comment-loading loading"></div>
       </div>
     </div>
-  );
+    )
 };

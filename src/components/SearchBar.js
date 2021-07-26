@@ -11,11 +11,11 @@ export const SearchBar = () => {
   const term = useSelector(selectSearchTerm);
   const dispatch = useDispatch();
 
-  const handleSearch = async (e) => {
+  const handleSearch =  (e) => {
     e.preventDefault();
     if (term.length === 0) return;
-    await dispatch(fetchSearchResults(term));
-    dispatch(setShowComments());
+    dispatch(setShowComments(false));
+    dispatch(fetchSearchResults(term));
   };
 
   const handleChange = (e) => {

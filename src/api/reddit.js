@@ -17,7 +17,7 @@ export const getPostData = async (permalink) => {
         if(name !== '[deleted]' && name !== undefined) {
             const profileData = await fetch(`${API_ROOT}/user/${name}/about.json`);
             const jsonProfileData = await profileData.json();
-            return jsonProfileData.data.snoovatar_img;
+            return jsonProfileData.data.icon_img.replace(/\?.*$/, '');
         } else {
             return '';
         } 
@@ -26,7 +26,7 @@ export const getPostData = async (permalink) => {
 };
 
 export const getSearchResults = async (term) => {
-    const response = await fetch(`${API_ROOT}/search.json?q=${term}`);
+    const response = await fetch(`${API_ROOT}/search.json?q=${term}&type=link`);
     const json = await response.json();
     return json.data.children.map(post => post.data);
 }

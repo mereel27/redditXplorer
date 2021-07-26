@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player/lazy';
 import avatar from '../../img/avatar.svg';
 import comments from '../../img/comment.svg';
 import votes from '../../img/vote.svg';
+import { getTime, shortNumber } from '../../utils/utils';
 
 export const TopicCard = ({
   index,
@@ -16,6 +17,8 @@ export const TopicCard = ({
       <div className="post-author">
         <img className="avatar" src={avatar} alt="" loading="lazy" />
         <span>{post.author}</span>
+        <span>{post.subreddit_name_prefixed}</span>
+        <span>{getTime(post.created_utc)}</span>
       </div>
 
       <h4>{post.title}</h4>
@@ -71,11 +74,11 @@ export const TopicCard = ({
       <div className="info" onClick={() => handleClick(post.permalink, index)}>
         <div className={isComments ? 'comment-info-off' : 'comment-info'}>
           <img src={comments} alt="" />
-          <span>{post.num_comments} comments</span>
+          <span>{shortNumber(post.num_comments)}</span>
         </div>
         <div className="upvote-info">
           <img src={votes} alt="" />
-          <span>{post.ups} upvotes</span>
+          <span>{shortNumber(post.ups)}</span>
         </div>
       </div>
     </div>

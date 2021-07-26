@@ -42,7 +42,6 @@ export const redditCommentsSlice = createSlice({
             state.error = false;
             state.comments = action.payload[0];
             state.avatars = action.payload[1];
-            state.showComments = true;
         },
         [fetchPostData.rejected]: state => {
             state.isLoading = false;
@@ -55,5 +54,6 @@ export const { setComments, setShowComments, setPostId } = redditCommentsSlice.a
 export default redditCommentsSlice.reducer;
 export const selectAllComments = state => state.redditComments.comments;
 export const showComments = state => state.redditComments.showComments;
+export const isCommentsLoading = state => state.redditComments.isLoading;
 export const selectPostId = state => state.redditComments.postId;
 export const selectAvatars = state => state.redditComments.avatars;
