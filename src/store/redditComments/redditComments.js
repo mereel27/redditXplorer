@@ -7,6 +7,7 @@ import { TopicCard } from '../../components/TopicCard/TopicCard';
 import { LoadingCard } from '../../components/LoadingCard/LoadingCard';
 import { isCommentsLoading } from './redditCommentsSlice';
 import fakeAvatar from '../../img/avatar.svg';
+import { getTime } from '../../utils/utils';
 
 
 export const Comments =  ({posts, getVideoUrl, handleClick, isComments}) => {
@@ -27,9 +28,11 @@ export const Comments =  ({posts, getVideoUrl, handleClick, isComments}) => {
                 {commentsLoading ? Array(10).fill(<LoadingCard isComments={isComments} />) : comments.map((comment, index) => (
                     comment.author &&
                     <div key={index} className='comment'>
-                        <div className='author'>
+                        <div className='author-info'>
                             <img className='avatar' src={avatars[index] || fakeAvatar} alt=''></img>
-                            <span>{comment.author}</span>
+                            <span className='author-name'>{comment.author}</span>
+                            <div className='separator'></div>
+                            <span>{getTime(comment.created_utc)}</span>
                         </div>
                         <p>{comment.body}</p>
                     </div>

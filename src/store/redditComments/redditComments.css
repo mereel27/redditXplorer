@@ -9,29 +9,38 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    margin-bottom: 2vmin;
     box-shadow: 0 1px 2px 0 #b1b1b1;
+    word-wrap: break-word;
 }
 
 .comment {
+    background-color: white;
     width: 100%;
-    border-bottom: 1px solid rgb(207, 207, 207);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 1%;
+    padding: 2%;
 }
 
-.comment .author {
+.author-info {
     font-size: 12px;
-    color: orangered;
+    color: #525252;
     display: flex;
     align-items: center;
     width: 100%;
     margin-bottom: 1vmin;
 }
 
+.author-info >:not(.avatar) {
+    margin-right: 1%;
+}
+
+.author-name {
+    font-weight: 500;
+}
+
 .post-box video {
     max-height: 50vh;
     max-width: fit-content;
 }
+

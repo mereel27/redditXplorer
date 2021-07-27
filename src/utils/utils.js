@@ -1,5 +1,5 @@
 export const getTime = created => {
-    const time = Math.round((new Date() / 1000  - created) / 60);
+    const time = Math.round((Date.now() / 1000  - created) / 60);
     switch (true) {
       case time > 10080:
         return `${Math.round(time / 10080)} weeks ago`;

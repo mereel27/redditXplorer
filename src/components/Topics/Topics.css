@@ -14,13 +14,18 @@
     box-shadow: 0 1px 2px 0 #b1b1b1;
     border-radius: 2px;
     margin-bottom: 2vh;
-    padding: 1%;
+    padding: 1% 0;
 }
 
 .topic-content {
     text-align: left;
     display: flex;
     flex-direction: column;
+    text-overflow: ellipsis;
+}
+
+.topic-content > :not(.img-container) {
+    margin: 0 2%;
 }
 
 .topic-box > :not(:last-child) {
@@ -51,16 +56,22 @@
     }
 }
 
+.post-title, .post-author {
+    margin: 0 2%;
+}
+
 .post-author {
-    color: #585858;
+    color: #525252;
     display: flex;
     align-items: center;
 }
 
+.post-author > :not(.avatar) {
+    margin-right: 1%;
+}
+
 .post-author span {
-    color: #525252;
     font-size: calc(10px + 0.4vmin);
-    margin-right: calc(5px + 1vmin);
 }
 
 
@@ -78,6 +89,7 @@
     display: flex;
     align-items: center;
     color: #525252;
+    margin-left: 1%;
 }
 
 .info img {

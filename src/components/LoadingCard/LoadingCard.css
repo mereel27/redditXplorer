@@ -7,8 +7,8 @@
 }
 
 .avatar-loading {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
     border-radius: 50%;
     margin-right: 2%;
 }
@@ -44,6 +44,10 @@
 .info-loading {
     width: 100%;
     display: flex;
+}
+
+.no-margin {
+    margin: 0;
 }
 
 @keyframes loading {

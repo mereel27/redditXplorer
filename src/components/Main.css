@@ -131,3 +131,10 @@ select:hover {
         font-size: calc(12px + 1vmin);
     }
 }
+
+.separator {
+    width: 3px;
+    height: 3px;
+    background-color: #525252;
+    border-radius: 50%;
+}

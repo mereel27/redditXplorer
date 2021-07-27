@@ -17,11 +17,13 @@ export const TopicCard = ({
       <div className="post-author">
         <img className="avatar" src={avatar} alt="" loading="lazy" />
         <span>{post.author}</span>
+        <div className='separator'></div>
         <span>{post.subreddit_name_prefixed}</span>
+        <div className='separator'></div>
         <span>{getTime(post.created_utc)}</span>
       </div>
 
-      <h4>{post.title}</h4>
+      <h4 className='post-title'>{post.title}</h4>
 
       <div className="topic-content">
         {post.post_hint === 'image' && !post.url.substring(-4).includes('gif') && (
