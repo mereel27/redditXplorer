@@ -22,3 +22,9 @@ export const shortNumber = number => {
 }
 
 export const randomNumber = () => Math.floor(Math.random() * (8-4) + 4);
+
+export const decode = html => {
+  const text = document.createElement('span');
+  text.innerHTML = html;
+  return text.textContent || text.innerText;
+}

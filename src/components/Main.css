@@ -1,140 +1,110 @@
 .Main {
-    display: flex;
-    flex-direction: column;
-    margin: 3vmin 0 0 ;
+  display: flex;
+  flex-direction: column;
+  margin: 3vmin 0 0;
 }
 
 .content-box {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .currentCategory {
-    display: flex;
-    margin: 2vh 0;
-    padding: 1%;
-    font-size: 22px;
-    font-weight: 600;
+  display: flex;
+  margin: 2vh 0;
+  padding: 1%;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .icon {
-    width: 2em;
-    height: 2em;
-    border-radius: 50%;
-    background-position: center;
-    background-size: contain;
-}
-
-#funny {
-    background-image: url('../img/funny.png');
-}
-
-#ask {
-    background-image: url('../img/ask.png');
-}
-
-#gaming {
-    background-image: url('../img/gaming.png');
-}
-
-#aww {
-    background-image: url('../img/aww.png');
-}
-
-#pics {
-    background-image: url('../img/pics.png');
-}
-
-#music {
-    background-image: url('../img/music.png');
-}
-
-#videos {
-    background-image: url('../img/videos.jpg');
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
 }
 
 .nav-container {
-    width: 100%;
-    background-color: white;
-    margin-bottom: 3vmin;
-    height: calc(5px + 10vmin);
-    border-radius: 2px;
-    max-height: 50px;
-    display: flex;
-    overflow: hidden;
-    padding: 0 2%;
-    box-shadow: 0 1px 2px 0 #b1b1b1;
+  width: 100%;
+  background-color: white;
+  margin-bottom: 3vmin;
+  height: calc(5px + 10vmin);
+  border-radius: 2px;
+  max-height: 50px;
+  display: flex;
+  overflow: hidden;
+  padding: 0 2%;
+  box-shadow: 0 1px 2px 0 #b1b1b1;
 }
 
 nav {
-    width: 100%;
-    height: 100%;
-    justify-content: space-evenly;
-    align-items: center;
-    display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
 }
-
 
 nav span {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    font-weight: 500;
-    font-size: calc(12px + 2vmin);
-    border-bottom: 4px solid transparent;
-    user-select: none;
-    justify-content: center;
-}
-  
-nav span:hover{
-    cursor: pointer;
-    border-bottom: 4px solid #ff4500;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-weight: 500;
+  font-size: calc(12px + 2vmin);
+  border-bottom: 4px solid transparent;
+  user-select: none;
+  justify-content: center;
 }
 
+nav span:hover {
+  cursor: pointer;
+  border-bottom: 4px solid #ff4500;
+}
 
 select {
-    height: 100%;
-    box-sizing: border-box;
-    outline: none;
-    background-color: transparent;
-    border: none;
-    font-size: calc(12px + 2vmin);
-    font-weight: 500;
-    color: #383838;
-    width: auto;
-    font-family: inherit;
-    cursor: pointer;
-    line-height: inherit;
-    text-align-last: center;
-    border-bottom: 4px solid transparent;
-    flex-grow: 0;
-    margin-left: -10px;
-    user-select: none;
+  height: 100%;
+  box-sizing: border-box;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  font-size: calc(12px + 2vmin);
+  font-weight: 500;
+  color: #383838;
+  width: auto;
+  font-family: inherit;
+  cursor: pointer;
+  line-height: inherit;
+  text-align-last: center;
+  border-bottom: 4px solid transparent;
+  flex-grow: 0;
+  margin-left: -10px;
+  user-select: none;
 }
 
 select:hover {
-    border-bottom: 4px solid #ff4500;
-}
-
-@media screen and (min-width: 1024px) {
-    .Main {
-        margin-left: 25%;
-        margin-right: 25%;
-    }
-
-    nav span {
-        font-size: calc(12px + 1vmin);
-    }
-    
-    select {
-        font-size: calc(12px + 1vmin);
-    }
+  border-bottom: 4px solid #ff4500;
 }
 
 .separator {
-    width: 3px;
-    height: 3px;
-    background-color: #525252;
-    border-radius: 50%;
+  width: 3px;
+  height: 3px;
+  background-color: #525252;
+  border-radius: 50%;
+}
+
+@media screen and (min-width: 1024px) {
+  .Main {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  nav span {
+    font-size: calc(12px + 1vmin);
+  }
+
+  select {
+    font-size: calc(12px + 1vmin);
+  }
 }
