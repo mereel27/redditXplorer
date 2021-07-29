@@ -48,10 +48,10 @@ blockquote {
   background-color: #eeeeeecc;
   border-left: 4px solid grey;
   padding: 1%;
-  font-style: italic;
 }
 
-code {
-  color: #ff006d;
-  background-color: #f6f7f8;
+pre {
+    overflow: auto;
+    background-color: #f6f7f8;
+    padding: 1%;
 }
