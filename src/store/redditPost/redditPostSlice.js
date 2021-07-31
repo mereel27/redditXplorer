@@ -1,13 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getRedditPosts, getSearchResults } from '../../api/reddit';
+import { getRedditPosts, getSearchResults, getNextPage } from '../../api/reddit';
 
 
 const initialState = {
     posts: [],
     error: false,
     isLoading: false,
+    nextLoading: false,
     searchTerm: '',
     selectedCategory: '/r/popular',
+    nextPage: ''
 };
 
 
@@ -20,6 +22,11 @@ export const fetchSearchResults = createAsyncThunk(
     'reddit/fetchSearchResults',
     async (term) => await getSearchResults(term)
 );
+
+export const fetchNextPage = createAsyncThunk(
+    'reddit/fetchNextPage',
+    async ({nextPage, category}) => await getNextPage(nextPage, category)
+)
 
 
 export const redditSlice = createSlice({
@@ -44,7 +51,8 @@ export const redditSlice = createSlice({
         [fetchPosts.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.error = false;
-            state.posts = action.payload;
+            state.posts = action.payload[0];
+            state.nextPage = action.payload[1];
         },
         [fetchPosts.rejected]: state => {
             state.isLoading = false;
@@ -63,6 +71,20 @@ export const redditSlice = createSlice({
         [fetchSearchResults.rejected]: state => {
             state.isLoading = false;
             state.error = true;
+        },
+        [fetchNextPage.pending]: state => {
+            state.nextLoading = true;
+            state.error = false;
+        },
+        [fetchNextPage.fulfilled]: (state, action) => {
+            state.nextLoading = false;
+            state.error = false;
+            state.posts.push(...action.payload[0]);
+            state.nextPage = action.payload[1];
+        },
+        [fetchNextPage.rejected]: state => {
+            state.nextLoading = false;
+            state.error = true;
         }
     }
 });
@@ -72,4 +94,6 @@ export const selectPosts = state => state.reddit.posts;
 export const selectSearchTerm = state => state.reddit.searchTerm;
 export const selectedCategory = state => state.reddit.selectedCategory;
 export const isLoading = state => state.reddit.isLoading;
+export const selectNextPage = state => state.reddit.nextPage;
+export const nextLoading = state => state.reddit.nextLoading;
 export default redditSlice.reducer;

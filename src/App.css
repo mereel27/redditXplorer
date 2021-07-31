@@ -6,7 +6,8 @@
   margin: 0;
   align-items: center;
   padding: 0 1vmin;
-  box-shadow: 0 0px 2px 1px #b1b1b1;
+  /* box-shadow: 0 0px 2px 1px #b1b1b1; */
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -39,21 +40,21 @@ form {
 
 input {
   width: 100%;
-  border-radius: 2px;
+  border-radius: 20px;
   border: 1px solid transparent;
   font-size: calc(14px + 0.5vmin);
-  padding-left: 2vmin;
-  background-color: #eef0f2;
-  height: 50%;
+  padding-left: 5%;
+  background-color: #f8f8f8;
+  height: 65%;
+  box-shadow: #00000026 1.95px 1.95px 2.6px;
 }
 
 input:focus {
   outline: none;
-  /* border: 1px solid #ff4500; */
-  box-shadow: 0 0 4px 0px #ff440098;
+  box-shadow: #00000026 3.5px 3.5px 4.5px;
 }
 
-button {
+#search-button {
   width: calc(50px + 3vmin);
   height: 100%;
   background-image: url('./img/search.svg');
@@ -65,13 +66,16 @@ button {
   user-select: none;
 }
 
-button:hover {
-  cursor: pointer;
+#search-button:hover {
   transform: scale(1.2);
 }
 
-button:active {
+#search-button:active {
   transform: scale(1);
+}
+
+button {
+  cursor: pointer;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
@@ -106,4 +110,9 @@ button:active {
   .search-container {
     flex-grow: 0;
   }
+
+  input {
+    height: 50%;
+  }
+
 }

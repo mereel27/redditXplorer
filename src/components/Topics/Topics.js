@@ -9,6 +9,7 @@ import { randomNumber } from '../../utils/utils';
 
 export const Topics = ({posts, handleClick, getVideoUrl}) => {
     const loading = useSelector(isLoading);
+
     return (
         <div className='Topics'>
             {loading ? Array(randomNumber()).fill(<LoadingCard />) : posts.map((post, index) => (

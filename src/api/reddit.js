@@ -5,7 +5,7 @@ export const getRedditPosts = async (category) => {
     const response = await fetch(`${API_ROOT}${category}.json`);
     const json = await response.json();
 
-    return json.data.children.map(post => post.data);
+    return [json.data.children.map(post => post.data), json.data.after];
 };
 
 export const getPostData = async (permalink) => {
@@ -28,5 +28,13 @@ export const getPostData = async (permalink) => {
 export const getSearchResults = async (term) => {
     const response = await fetch(`${API_ROOT}/search.json?q=${term}&type=link`);
     const json = await response.json();
+
     return json.data.children.map(post => post.data);
+}
+
+export const getNextPage = async (page, category) => {
+    const response = await fetch(`${API_ROOT}${category}.json?after=${page}`);
+    const json = await response.json();
+    
+    return [json.data.children.map(post => post.data), json.data.after];
 }

@@ -77,8 +77,8 @@ export const TopicCard = ({
           </div>
         )}
       </div>
-      <div className="info" onClick={() => handleClick(post.permalink, index)}>
-        <div className={isComments ? 'comment-info-off' : 'comment-info'}>
+      <div className="info">
+        <div className={isComments ? 'comment-info-off' : 'comment-info'} onClick={() => handleClick(post.permalink, index)}>
           <img src={comments} alt="" />
           <span>{shortNumber(post.num_comments)}</span>
         </div>
