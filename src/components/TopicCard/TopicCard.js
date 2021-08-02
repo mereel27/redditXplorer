@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player/lazy';
 import avatar from '../../img/avatar.svg';
-import comments from '../../img/comment.svg';
-import votes from '../../img/vote.svg';
 import { getTime, shortNumber, decode } from '../../utils/utils';
 
 
