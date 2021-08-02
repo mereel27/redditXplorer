@@ -1,6 +1,7 @@
 import React from 'react';
 import logo2 from './logo2.svg';
 import './App.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 import Main from './components/Main';
 import { SearchBar } from './components/SearchBar';
 

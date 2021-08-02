@@ -1,4 +1,3 @@
-import React from 'react';
 import './LoadingCard.css';
 
 export const LoadingCard = ({ isComments }) => {

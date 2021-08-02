@@ -1,17 +1,21 @@
 .App-header {
   display: flex;
-  height: calc(20px + 10vmin);
+  height: 50px;
   font-size: calc(10px + 2vmin);
   background-color: white;
   margin: 0;
   align-items: center;
   padding: 0 1vmin;
   /* box-shadow: 0 0px 2px 1px #b1b1b1; */
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-shadow: #00000026 1.95px 1.95px 2.6px;
   position: sticky;
   top: 0;
   z-index: 10;
   justify-content: space-between;
+}
+
+.main-container {
+  display: flex;
 }
 
 .App-logo {
@@ -100,6 +104,15 @@ button {
   }
 }
 
+.left-navigation-bar {
+  display: none;
+  position: relative;
+  width: 20%;
+  height: 300px;
+  background-color: white;
+  box-shadow: #00000026 1.95px 1.95px 2.6px;
+}
+
 
 @media screen and (min-width: 1024px) {
   .App-header {
@@ -113,6 +126,10 @@ button {
 
   input {
     height: 50%;
+  }
+
+  .left-navigation-bar{
+    display: block;
   }
 
 }

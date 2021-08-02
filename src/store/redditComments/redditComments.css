@@ -6,6 +6,7 @@
 }
 
 .comments-box {
+  background-color: white;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -15,14 +16,18 @@
   word-wrap: break-word;
   border-radius: 15px;
   overflow: hidden;
+  line-height: 1.5rem;
+  padding: 2%;
+}
+
+.comments-box >:not(:last-child) {
+  margin-bottom: 15px;
 }
 
 .comment {
-  background-color: white;
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 2%;
 }
 
 .author-info {
@@ -57,4 +62,54 @@ pre {
     overflow: auto;
     background-color: #f6f7f8;
     padding: 1%;
+}
+
+.comment-container {
+  display: flex;
+}
+
+.voting-buttons {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: center;
+}
+
+.comment-body {
+  padding: 0 10px;
+  width: 100%;
+}
+
+.vote-up, .vote-down {
+  width: 30px;
+  border: none;
+  background-color: transparent;
+  color: #525252;
+  transition: all 0.4s ease-out;
+  font-size: 28px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+}
+
+.vote-up:hover {
+  color:rgb(1, 207, 1);
+}
+
+
+.vote-down:hover {
+  color: red;
+}
+
+
+.comment-stats {
+  display: flex;
+  align-items: center;
+  height: 25px;
+}
+
+.score {
+  font-size: 12px;
+  font-weight: 500;
+  color: #525252;
 }

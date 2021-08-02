@@ -3,42 +3,53 @@ import './Main.css';
 import {
   selectPosts,
   fetchPosts,
-  fetchNextPage,
   selectedCategory,
-  setCategory,
-  selectNextPage,
-  nextLoading,
+  setCategory
 } from '../store/redditPost/redditPostSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchPostData,
   showComments,
   setPostId,
-  setShowComments,
+  setShowComments
 } from '../store/redditComments/redditCommentsSlice';
 import { Topics } from './Topics/Topics';
 import { Comments } from '../store/redditComments/redditComments';
+
 
 const Main = () => {
   const redditPost = useSelector(selectPosts);
   const dispatch = useDispatch();
   const isComments = useSelector(showComments);
   const category = useSelector(selectedCategory);
-  const nextPage = useSelector(selectNextPage);
-  const nextPageLoading = useSelector(nextLoading);
 
   useEffect(() => {
     dispatch(fetchPosts(category));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    console.log('effect started')
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const button = document.getElementById('to-top-button');
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop || window.scrollY === 0) {
+        button.className = 'red-button hidden';
+      } else if (button) {
+        button.className = 'red-button';
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    })
+  }, []);
+
   const handleCommentsClick = (permalink, index) => {
     if (!isComments) {
       localStorage.savePos = window.scrollY;
       dispatch(setPostId(index));
-      dispatch(setShowComments(true));
       dispatch(fetchPostData(permalink));
       window.scrollTo(0, 0);
+      dispatch(setShowComments(true));
     } else {
       return;
     }
@@ -62,18 +73,6 @@ const Main = () => {
     dispatch(fetchPosts(e.target.id));
     dispatch(setCategory(e.target.id));
     dispatch(setShowComments(false));
-  };
-
-  const handleNextPage = () => {
-    dispatch(fetchNextPage({ nextPage, category }));
-  };
-
-  const handleBackClick = () => {
-    dispatch(setShowComments(false));
-    setTimeout(() => {
-      const savedPos = localStorage.getItem('savePos');
-      window.scrollTo(0, savedPos);
-    }, 200);
   };
 
   return (
@@ -112,15 +111,7 @@ const Main = () => {
           </select>
         </nav>
       </div>
-      <div className={isComments ? 'back-button-container' : 'hidden'}>
-        <button
-          id="back-button"
-          className="red-button"
-          onClick={handleBackClick}
-        >
-          <i className="arrow left"></i> BACK
-        </button>
-      </div>
+      
       <div className="content-box">
         {isComments ? (
           <Comments
@@ -137,29 +128,6 @@ const Main = () => {
           />
         )}
       </div>
-
-      {nextPageLoading ? (
-        <div id="loading">
-          <div id="loading-img"></div>
-        </div>
-      ) : nextPage.length ? (
-        <div className="more-button-container">
-          <button
-            className="red-button"
-            id="more-button"
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            BACK TO TOP
-          </button>
-          <button
-            className="red-button"
-            id="more-button"
-            onClick={() => handleNextPage()}
-          >
-            MORE
-          </button>
-        </div>
-      ) : null}
     </div>
   );
 };

@@ -6,7 +6,7 @@ const initialState = {
     posts: [],
     error: false,
     isLoading: false,
-    nextLoading: false,
+    nextPageLoading: false,
     searchTerm: '',
     selectedCategory: '/r/popular',
     nextPage: ''
@@ -73,17 +73,17 @@ export const redditSlice = createSlice({
             state.error = true;
         },
         [fetchNextPage.pending]: state => {
-            state.nextLoading = true;
+            state.nextPageLoading = true;
             state.error = false;
         },
         [fetchNextPage.fulfilled]: (state, action) => {
-            state.nextLoading = false;
+            state.nextPageLoading = false;
             state.error = false;
             state.posts.push(...action.payload[0]);
             state.nextPage = action.payload[1];
         },
         [fetchNextPage.rejected]: state => {
-            state.nextLoading = false;
+            state.nextPageLoading = false;
             state.error = true;
         }
     }
@@ -95,5 +95,5 @@ export const selectSearchTerm = state => state.reddit.searchTerm;
 export const selectedCategory = state => state.reddit.selectedCategory;
 export const isLoading = state => state.reddit.isLoading;
 export const selectNextPage = state => state.reddit.nextPage;
-export const nextLoading = state => state.reddit.nextLoading;
+export const nextPageLoading = state => state.reddit.nextPageLoading;
 export default redditSlice.reducer;

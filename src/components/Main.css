@@ -51,8 +51,8 @@ nav span {
   display: flex;
   align-items: center;
   height: 100%;
-  font-weight: 500;
-  font-size: calc(12px + 2vmin);
+  font-weight: 600;
+  font-size: 14px;
   border-bottom: 4px solid transparent;
   user-select: none;
   justify-content: center;
@@ -69,8 +69,8 @@ select {
   outline: none;
   background-color: transparent;
   border: none;
-  font-size: calc(12px + 2vmin);
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 600;
   color: #383838;
   width: auto;
   font-family: inherit;
@@ -94,26 +94,6 @@ select:hover {
   border-radius: 50%;
 }
 
-@media screen and (min-width: 1024px) {
-  .Main {
-    margin-left: 25%;
-    margin-right: 25%;
-  }
-
-  nav span {
-    font-size: calc(12px + 1vmin);
-  }
-
-  select {
-    font-size: calc(12px + 1vmin);
-  }
-
-  .nav-container {
-    border-radius: 20px;
-  }
-
-}
-
 .more-button-container, .back-button-container {
   width: 100%;
   display: flex;
@@ -128,32 +108,24 @@ select:hover {
   margin-bottom: 10px;
 }
 
-#loading {
-  margin: 0 auto;
-}
-
 #loading-img {
   background-image: url('../img/loading.svg');
   background-size: contain;
   width: 50px;
   height: 50px;
+  margin: 0 auto;
 }
 
 .red-button {
   color: white;
   font-weight: 600;
-  text-shadow: #00000026 1.95px 1.95px 2.6px;
-  height: 30px;
-  width: fit-content;
-  padding: 1% 3%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 20px;
   border: none;
-  background-color: #ec0d43;
-  background-image: linear-gradient(0deg, #ec0d43 0%, #ff4500 100%);
-  box-shadow: #0000003f 1.95px 1.95px 2.6px;
+  background-color: #ff4500;
+  box-shadow: #00000026 1.95px 1.95px 2.6px;
 }
 
 .red-button:active {
@@ -167,6 +139,8 @@ select:hover {
 }
 
 #back-button{
+  padding: 1% 3%;
+  height: 30px;
   margin-left: 1%;
 }
 
@@ -175,7 +149,6 @@ select:hover {
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
-  filter: drop-shadow(1.95px 1.95px 2.6px #00000026);
   margin-right: 3px;
 }
 
@@ -184,6 +157,37 @@ select:hover {
   -webkit-transform: rotate(135deg);
 }
 
+#to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 2%;
+  z-index: 10;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color:#ff4500 ;
+}
+
 .hidden {
   display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .Main {
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+
+  nav span {
+    font-size: calc(10px + 1vmin);
+  }
+
+  select {
+    font-size: calc(10px + 1vmin);
+  }
+
+  .nav-container {
+    border-radius: 20px;
+  }
+
 }
