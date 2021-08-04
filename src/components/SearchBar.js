@@ -31,7 +31,7 @@ export const SearchBar = () => {
           onChange={handleChange}
           value={term}
         />
-        <button id='search-button' type="submit">Search</button>
+        <button id='search-button' type="submit"><i className="bi bi-search"></i></button>
       </form>
     </div>
   );

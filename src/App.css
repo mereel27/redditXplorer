@@ -32,50 +32,61 @@
 .search-container {
   background-color: white;
   height: 100%;
-  margin-left: 2%;
+  margin: 0 2%;
   flex-grow: 1;
 }
 
 form {
+  position: relative;
   display: flex;
   height: 100%;
   align-items: center;
 }
 
+form i {
+  font-size: 18px;
+  color:#525252;
+}
+
 input {
   width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 1px solid transparent;
   font-size: calc(14px + 0.5vmin);
-  padding-left: 5%;
-  background-color: #f8f8f8;
-  height: 65%;
+  padding-left: 48px;
+  background-color: #eef0f2;
+  height: 70%;
   box-shadow: #00000026 1.95px 1.95px 2.6px;
+  border: 1px solid transparent;
+}
+
+input::placeholder {
+  font-size: 14px;
 }
 
 input:focus {
   outline: none;
-  box-shadow: #00000026 3.5px 3.5px 4.5px;
+  border: 1px solid rgba(0, 68, 255, 0.404);
 }
 
 #search-button {
-  width: calc(50px + 3vmin);
-  height: 100%;
-  background-image: url('./img/search.svg');
-  background-position: center;
-  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  width: 45px;
+  height: 70%;
+  padding: 0;
+  border-radius: 10px;
   border: none;
   background-color: transparent;
-  color: transparent;
   user-select: none;
 }
 
 #search-button:hover {
-  transform: scale(1.2);
+  background-color: #e4e4e4;
 }
 
 #search-button:active {
-  transform: scale(1);
+  transform: translateY(1px);
 }
 
 button {
@@ -116,15 +127,15 @@ button {
 
 @media screen and (min-width: 1024px) {
   .App-header {
-      padding-left: 26%;
-      padding-right: 25%;
+      padding-left: 30%;
+      padding-right: 30%;
       height: calc(20px + 6vmin);
   }
   .search-container {
     flex-grow: 0;
   }
 
-  input {
+  input, #search-button {
     height: 50%;
   }
 

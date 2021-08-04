@@ -6,7 +6,7 @@ export const BottomButtons = ({ moreClick, loading, ready, isMore }) => {
         id="to-top-button"
         onClick={() => window.scrollTo(0, 0)}
       >
-        <i class="bi bi-triangle-fill"></i>
+        <i className="bi bi-triangle-fill"></i>
       </button>
       { loading ? (
       <div id="loading">

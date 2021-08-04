@@ -10,6 +10,7 @@ import {
   selectNextComments,
   setShowComments,
   nextCommentsLoading,
+  isError,
 } from './redditCommentsSlice';
 import { TopicCard } from '../../components/TopicCard/TopicCard';
 import { LoadingCard } from '../../components/LoadingCard/LoadingCard';
@@ -26,6 +27,7 @@ export const Comments = ({ posts, getVideoUrl, handleClick, isComments }) => {
   const dispatch = useDispatch();
   const nextComments = useSelector(selectNextComments);
   const permalink = posts[id].permalink;
+  const error = useSelector(isError);
 
   const handleNextComments = () => {
     dispatch(fetchNextComments({ nextComments, permalink }));
@@ -59,6 +61,8 @@ export const Comments = ({ posts, getVideoUrl, handleClick, isComments }) => {
       <div className="comments-box">
         {commentsLoading
           ? Array(10).fill(<LoadingCard isComments={isComments} />)
+          : error ? (<div className="error-message">Some error occured, please try again...</div>)
+          : comments.length === 0 ? (<div className='no-comments'>There are no comments yet...</div>)
           : comments.map(
               (comment, index) =>
                 comment.author && (

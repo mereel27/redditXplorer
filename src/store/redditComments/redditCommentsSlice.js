@@ -51,7 +51,8 @@ export const redditCommentsSlice = createSlice({
             state.comments = action.payload[0];
             state.avatars = action.payload[1];
             const index = action.payload[0].length - 1;
-            state.nextCommentsList = action.payload[0][index].children || [];
+            const isMoreComments = action.payload[0].length > 0 && action.payload[0][index].children;
+            state.nextCommentsList = isMoreComments ? action.payload[0][index].children : [];
             const commentsToShow = state.nextCommentsList.length > 50 ? 50 : state.nextCommentsList.length;
             state.nextComments = state.nextCommentsList.splice(0, commentsToShow);
         },
@@ -84,6 +85,7 @@ export default redditCommentsSlice.reducer;
 export const selectAllComments = state => state.redditComments.comments;
 export const showComments = state => state.redditComments.showComments;
 export const isCommentsLoading = state => state.redditComments.isLoading;
+export const isError = state => state.redditComments.error;
 export const selectPostId = state => state.redditComments.postId;
 export const selectAvatars = state => state.redditComments.avatars;
 export const selectNextComments = state => state.redditComments.nextComments;

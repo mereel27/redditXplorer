@@ -73,6 +73,13 @@ select:hover {
   border-bottom: 4px solid #ff4500;
 }
 
+nav span,
+select,
+.top-nav-container i {
+    font-size: calc(12px + 0.8vmin);
+}
+
+
 .separator {
   width: 3px;
   height: 3px;
@@ -164,15 +171,10 @@ select:hover {
     margin-right: 30%;
   }
 
-  nav span,
-  select,
-  .top-nav-container i
-   {
-    font-size: calc(10px + 0.5vmin);
-  }
+  
 
   .top-nav-container {
-    border-radius: 20px;
+    border-radius: 10px;
   }
 
 }
