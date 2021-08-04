@@ -17,7 +17,10 @@ export const getPostData = async (permalink) => {
       if (name !== '[deleted]' && name !== undefined) {
         const profileData = await fetch(`${API_ROOT}/user/${name}/about.json`);
         const jsonProfileData = await profileData.json();
-        return jsonProfileData.data.icon_img.replace(/\?.*$/, '');
+        if (!jsonProfileData.data.is_suspended) {
+          return jsonProfileData.data.icon_img.replace(/\?.*$/, '');
+        }
+        return '';
       } else {
         return '';
       }

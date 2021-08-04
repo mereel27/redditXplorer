@@ -10,28 +10,11 @@
   width: 100%;
 }
 
-.currentCategory {
-  display: flex;
-  margin: 2vh 0;
-  padding: 1%;
-  font-size: 22px;
-  font-weight: 600;
-}
-
-.icon {
-  width: 2em;
-  height: 2em;
-  border-radius: 50%;
-  background-position: center;
-  background-size: contain;
-}
-
-.nav-container {
+.top-nav-container {
   width: 100%;
   background-color: white;
   margin-bottom: 10px;
-  height: calc(5px + 10vmin);
-  max-height: 50px;
+  height: 50px;
   display: flex;
   overflow: hidden;
   padding: 0 2%;
@@ -39,7 +22,7 @@
   box-shadow: #00000026 1.95px 1.95px 2.6px;
 }
 
-nav {
+.top-nav-bar {
   width: 100%;
   height: 100%;
   justify-content: space-evenly;
@@ -47,18 +30,22 @@ nav {
   display: flex;
 }
 
-nav span {
+.top-nav-container i {
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.top-nav-container span {
   display: flex;
   align-items: center;
   height: 100%;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: 500;
   border-bottom: 4px solid transparent;
   user-select: none;
   justify-content: center;
 }
 
-nav span:hover {
+.top-nav-container span:hover {
   cursor: pointer;
   border-bottom: 4px solid #ff4500;
 }
@@ -69,8 +56,7 @@ select {
   outline: none;
   background-color: transparent;
   border: none;
-  font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: #383838;
   width: auto;
   font-family: inherit;
@@ -178,15 +164,14 @@ select:hover {
     margin-right: 30%;
   }
 
-  nav span {
-    font-size: calc(10px + 1vmin);
+  nav span,
+  select,
+  .top-nav-container i
+   {
+    font-size: calc(10px + 0.5vmin);
   }
 
-  select {
-    font-size: calc(10px + 1vmin);
-  }
-
-  .nav-container {
+  .top-nav-container {
     border-radius: 20px;
   }
 

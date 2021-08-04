@@ -75,13 +75,9 @@ export const Comments = ({ posts, getVideoUrl, handleClick, isComments }) => {
                     </div>
                     <div className='comment-container'>
                       <div className='voting-buttons'>
-                        <button className='vote-up'>
-                        <i class="bi bi-arrow-up-short"></i>
-                        </button>
+                        <i className="bi bi-arrow-up-short icon vote-up"></i>
                           <span className='score'>{comment.score}</span>
-                        <button className='vote-down'>
-                        <i class="bi bi-arrow-down-short"></i>
-                        </button>
+                        <i className="bi bi-arrow-down-short icon vote-down"></i>
                       </div>
                       <div className='comment-body'
                         dangerouslySetInnerHTML={{

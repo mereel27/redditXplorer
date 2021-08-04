@@ -77,15 +77,13 @@ export const TopicCard = ({
       </div>
       <div className="info">
         <div className={isComments ? 'comment-info-off' : 'comment-info'} onClick={() => handleClick(post.permalink, index)}>
-          <button className='comments-button'>
-            <i class="bi bi-chat-right-text"></i>
-          </button>
+            <i className="bi bi-chat-square-text icon"></i>
           <span>{shortNumber(post.num_comments)}</span>
         </div>
         <div className="upvote-info">
-          <button className='vote-down'><i class="bi bi-arrow-down-short"></i></button>
+          <i className="bi bi-arrow-down-short icon vote-down"></i>
           <span>{shortNumber(post.ups)}</span>
-          <button className='vote-up'><i class="bi bi-arrow-up-short"></i></button>
+          <i className="bi bi-arrow-up-short icon vote-up"></i>
         </div>
       </div>
     </div>

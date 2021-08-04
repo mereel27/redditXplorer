@@ -101,7 +101,6 @@
 }
 
 .info {
-  font-size: 14px;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -124,31 +123,27 @@
   justify-content: center;
 }
 
-.comment-info {
+.comment-info, .comment-info-off {
   border-radius: 5px;
-  padding-top: 5px;
-  padding-right: 5px;
+  padding: 3px;
+}
+
+.comment-info .icon, .comment-info-off .icon {
+  font-size: 20px;
+  margin-right: 5px;
 }
 
 .upvote-info {
   margin-left: auto;
 }
 
-.comment-info:hover {
-  cursor: pointer;
-  background-color: rgba(228, 228, 228, 0.678);
+.upvote-info span {
+  margin: 0 2px;
 }
 
-.comments-button {
-  border: none;
-  background-color: transparent;
-  width: 30px;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #525252;
-  padding: 0;
+.comment-info:hover {
+  cursor: pointer;
+  background-color: #eef0f2;
 }
 
 p {
@@ -203,4 +198,32 @@ p {
   .info {
     margin: 0 2%;
   }
+}
+
+.vote-up, .vote-down {
+  color: #525252;
+  transition: all 0.3s ease-out;
+  font-size: 28px;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.vote-up:hover, .vote-down:hover {
+  cursor: pointer;
+  background-color: #eef0f2;
+}
+
+.vote-up:hover {
+  color:#01cf01;
+}
+
+
+.vote-down:hover {
+  color: #fa3333;
+}
+
+.icon::before {
+  vertical-align: middle;
 }
