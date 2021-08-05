@@ -39,13 +39,15 @@ export const getSearchResults = async (term) => {
 export const getNextPage = async (page, category) => {
   const response = await fetch(`${API_ROOT}${category}.json?after=${page}`);
   const json = await response.json();
+  const data = json.data.children.map((post) => post.data);
+  const nextPage = json.data.after || '';
 
-  return [json.data.children.map((post) => post.data), json.data.after];
+  return [data, nextPage];
 };
 
 export const getNextComments = async (idList, permalink) => {
   const commentsList = await Promise.all(
-    idList.map(async (link, index) => {
+    idList.map(async (link) => {
       const commentData = await fetch(`${API_ROOT}${permalink}${link}.json`);
       const jsonCommentData = await commentData.json();
       if (jsonCommentData[1].data.children.length > 0) {
@@ -60,7 +62,7 @@ export const getNextComments = async (idList, permalink) => {
   const names = data.map((comment) => comment.author);
 
   const avatars = await Promise.all(
-    names.map(async (name, index) => {
+    names.map(async (name) => {
       if (name !== '[deleted]' && name !== undefined) {
         const profileData = await fetch(`${API_ROOT}/user/${name}/about.json`);
         const jsonProfileData = await profileData.json();
