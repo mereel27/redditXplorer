@@ -12,10 +12,10 @@
   width: 100%;
   max-height: fit-content;
   /* box-shadow: 0 1px 2px 0 #b1b1b1; */
-  box-shadow: #00000026 1.95px 1.95px 2.6px;
   margin-bottom: 10px;
   padding: 1% 0;
   line-height: 1.5rem;
+  border: 1px solid transparent;
 }
 
 .topic-box > :not(:last-child, .flair-text, .topic-content) {

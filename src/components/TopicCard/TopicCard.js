@@ -62,6 +62,8 @@ export const TopicCard = ({
           </div>
         )}
 
+        {post.preview && post.preview.reddit_video_preview && post.preview.reddit_video_preview.is_gif && <video src={post.preview.reddit_video_preview.fallback_url} controls></video>}
+
         {post.domain.includes('yout') && (
           <div className="yt-container">
             <iframe
