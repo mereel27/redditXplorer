@@ -28,3 +28,15 @@ export const decode = html => {
   text.innerHTML = html;
   return text.textContent || text.innerText;
 }
+
+
+export const getImgUrls = (items, metadata) => {
+  const imgArray = items.map(data => {
+    const imgType = metadata[data.media_id].m.replace('image/', '');
+    const url = `https://i.redd.it/${data.media_id}.${imgType}`;
+    return {
+      original: url,
+    };
+  });
+  return imgArray;
+};

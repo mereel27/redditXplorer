@@ -1,3 +1,5 @@
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
 .Topics {
   width: 100%;
   display: flex;
@@ -11,11 +13,14 @@
   background-color: white;
   width: 100%;
   max-height: fit-content;
-  /* box-shadow: 0 1px 2px 0 #b1b1b1; */
+  box-shadow: #00000026 1.95px 1.95px 2.6px;
   margin-bottom: 10px;
   padding: 1% 0;
-  line-height: 1.5rem;
   border: 1px solid transparent;
+}
+
+.topic-box :not(.flair-text) {
+  line-height: 1.5rem;
 }
 
 .topic-box > :not(:last-child, .flair-text, .topic-content) {
@@ -48,7 +53,7 @@
   font-weight: 500;
   background-color: #295afc;
   width: fit-content;
-  padding: 0 6px;
+  padding: 1px 6px;
   border-radius: 20px;
   margin-bottom: 5px;
 }
@@ -72,11 +77,41 @@
   margin: 0 2%;
 }
 
-.topic-content a {
-  display: block;
+a {
+  display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
+  max-width: 50%;
+  padding-right: 20px;
+  text-decoration: none;
+  font-size: 13px;
+  color: #2a56ce;
+  font-weight: 500;
+  vertical-align: text-bottom;
+}
+
+a span {
+  padding-right: 20px;
+  margin-right: 20px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.topic-content a i {
+  position: sticky;
+  right: -12px;
+  font-size: 18px;
+  color: #2a56ce;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.topic-content a i:hover {
+  transform: scale(1.1);
 }
 
 .img-container {
@@ -181,25 +216,6 @@ p {
   height: 100%;
 }
 
-@media screen and (min-width: 1024px) {
-  .compact-img {
-    max-height: 60vh;
-    object-fit: contain;
-  }
-
-  .topic-box {
-    border-radius: 15px;
-  }
-
-  .img-container {
-    margin: 0 2%;
-  }
-
-  .info {
-    margin: 0 2%;
-  }
-}
-
 .vote-up, .vote-down {
   color: #525252;
   transition: all 0.3s ease-out;
@@ -226,4 +242,47 @@ p {
 
 .icon::before {
   vertical-align: middle;
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  max-height: 700px;
+}
+
+.image-gallery-content.bottom.fullscreen .image-gallery-slide .image-gallery-image {
+  max-height: 100vh;
+}
+
+.img-container video, .img-container iframe {
+  width: 100%;
+  max-height: 60vh;
+  background-color: black;
+}
+
+.image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {
+  height: 60px;
+  width: 30px;
+}
+
+@media screen and (min-width: 1024px) {
+  .compact-img {
+    max-height: 60vh;
+    object-fit: contain;
+  }
+
+  .topic-box {
+    border-radius: 15px;
+  }
+
+  .img-container {
+    margin: 0 2%;
+  }
+
+  .info {
+    margin: 0 2%;
+  }
+
+  .image-gallery-content .image-gallery-slide .image-gallery-image {
+    max-height: 60vh;
+  }
+
 }

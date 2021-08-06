@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactPlayer from 'react-player/lazy';
 import avatar from '../../img/avatar.svg';
-import { getTime, shortNumber, decode } from '../../utils/utils';
+import { getTime, shortNumber, decode, getImgUrls } from '../../utils/utils';
+import ImageGallery from 'react-image-gallery';
 
 
 export const TopicCard = ({
@@ -44,7 +45,7 @@ export const TopicCard = ({
           <div className={!isComments ? 'short' : ''} dangerouslySetInnerHTML={{__html: decode(post.selftext_html)}}></div>
         )}
 
-        {post.post_hint === 'link' && <a href={post.url} target="_blank" rel="noreferrer">{post.url}</a>}
+        {post.post_hint === 'link' && <a href={post.url} target="_blank" rel="noreferrer">{post.url}<i class="bi bi-box-arrow-in-right"></i></a>}
 
         {post.is_video && (
           <div
@@ -62,7 +63,29 @@ export const TopicCard = ({
           </div>
         )}
 
-        {post.preview && post.preview.reddit_video_preview && post.preview.reddit_video_preview.is_gif && <video src={post.preview.reddit_video_preview.fallback_url} controls></video>}
+        {post.domain !== 'gfycat.com'
+        && post.preview 
+        && post.preview.reddit_video_preview 
+        && post.preview.reddit_video_preview.is_gif 
+        && 
+        <div className="img-container">
+          <video src={post.preview.reddit_video_preview.fallback_url} controls preload="meta"></video>
+        </div>}
+
+        {post.domain === 'gfycat.com' 
+        && post.post_hint !== 'link' 
+        && <div className="img-container" dangerouslySetInnerHTML={{__html: decode(post.media_embed.content)}}></div>}
+
+        {post.gallery_data 
+        && (
+          <div className="img-container">
+          <ImageGallery 
+            items={getImgUrls(post.gallery_data.items, post.media_metadata)}
+            lazyLoad={true}
+            showIndex={true}
+          />
+          </div>
+        )}
 
         {post.domain.includes('yout') && (
           <div className="yt-container">
