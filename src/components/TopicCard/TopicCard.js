@@ -45,7 +45,7 @@ export const TopicCard = ({
           <div className={!isComments ? 'short' : ''} dangerouslySetInnerHTML={{__html: decode(post.selftext_html)}}></div>
         )}
 
-        {post.post_hint === 'link' && <a href={post.url} target="_blank" rel="noreferrer">{post.url}<i class="bi bi-box-arrow-in-right"></i></a>}
+        {post.post_hint === 'link' && <a href={post.url} target="_blank" rel="noreferrer">{post.url}<i className="bi bi-box-arrow-in-right"></i></a>}
 
         {post.is_video && (
           <div
