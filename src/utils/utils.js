@@ -2,15 +2,15 @@ export const getTime = created => {
     const time = Math.round((Date.now() / 1000  - created) / 60);
     switch (true) {
       case time > 10080:
-        return `${Math.round(time / 10080)} weeks ago`;
+        return `${Math.round(time / 10080)} weeks`;
       case time > 1440:
-        return `${Math.round(time / 1440)} days ago`;
+        return `${Math.round(time / 1440)} days`;
       case time > 60:
-        return `${Math.round(time / 60)} hrs ago`;
+        return `${Math.round(time / 60)}h`;
       case (time < 60 && time > 1) || time === 0:
-        return `${time} mins ago`;
+        return `${time}m`;
       case time === 1:
-        return `${time} min ago`;
+        return `${time}m`;
       default:
         break;
     } 

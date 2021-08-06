@@ -19,9 +19,9 @@ export const TopicCard = ({
     <div key={index} className="topic-box">
       <div className="post-author">
         <img className="avatar" src={avatar} alt="" loading="lazy" />
-        <span>{post.author}</span>
-        <div className="separator"></div>
         <span>{post.subreddit_name_prefixed}</span>
+        <div className="separator"></div>
+        <span>{post.author}</span>
         <div className="separator"></div>
         <span>{getTime(post.created_utc)}</span>
       </div>
@@ -102,13 +102,13 @@ export const TopicCard = ({
       </div>
       <div className="info">
         <div className={isComments ? 'comment-info-off' : 'comment-info'} onClick={() => handleClick(post.permalink, index)}>
-            <i className="bi bi-chat-square-text icon"></i>
+          <i className="bi bi-chat icon"></i>
           <span>{shortNumber(post.num_comments)}</span>
         </div>
         <div className="upvote-info">
-          <i className="bi bi-arrow-down-short icon vote-down"></i>
+          <i className="bi bi-chevron-down icon vote-down"></i>
           <span>{shortNumber(post.ups)}</span>
-          <i className="bi bi-arrow-up-short icon vote-up"></i>
+          <i className="bi bi-chevron-up icon vote-up"></i>
         </div>
       </div>
     </div>

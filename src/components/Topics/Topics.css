@@ -15,7 +15,7 @@
   max-height: fit-content;
   box-shadow: #00000026 1.95px 1.95px 2.6px;
   margin-bottom: 10px;
-  padding: 1% 0;
+  padding-top: 1%;
   border: 1px solid transparent;
 }
 
@@ -142,6 +142,7 @@ a:hover {
   color: #525252;
   margin: 0 1%;
   height: 40px;
+  font-size: 16px;
 }
 
 .info img {
@@ -160,7 +161,7 @@ a:hover {
 
 .comment-info, .comment-info-off {
   border-radius: 5px;
-  padding: 3px;
+  padding: 5px 8px;
 }
 
 .comment-info .icon, .comment-info-off .icon {
@@ -170,10 +171,11 @@ a:hover {
 
 .upvote-info {
   margin-left: auto;
+  padding: 0 6px;
 }
 
 .upvote-info span {
-  margin: 0 2px;
+  margin: 0 5px;
 }
 
 .comment-info:hover {
@@ -218,11 +220,10 @@ p {
 
 .vote-up, .vote-down {
   color: #525252;
-  transition: all 0.3s ease-out;
-  font-size: 28px;
+  font-size: 24px;
   border: none;
   background-color: transparent;
-  padding: 0;
+  padding: 3px;
   border-radius: 50%;
 }
 
@@ -231,18 +232,16 @@ p {
   background-color: #eef0f2;
 }
 
-.vote-up:hover {
+.vote-up:active {
   color:#01cf01;
 }
 
 
-.vote-down:hover {
+.vote-down:active {
   color: #fa3333;
 }
 
-.icon::before {
-  vertical-align: middle;
-}
+
 
 .image-gallery-content .image-gallery-slide .image-gallery-image {
   max-height: 700px;
@@ -263,6 +262,10 @@ p {
   width: 30px;
 }
 
+.info {
+  margin: 1% 1%;
+}
+
 @media screen and (min-width: 1024px) {
   .compact-img {
     max-height: 60vh;
@@ -278,11 +281,17 @@ p {
   }
 
   .info {
-    margin: 0 2%;
+    margin: 1% 2%;
   }
 
   .image-gallery-content .image-gallery-slide .image-gallery-image {
     max-height: 60vh;
   }
 
+}
+
+.bi-chevron-up::before, 
+.bi-chevron-down::before, 
+.bi-chat::before {
+  font-weight: 600 !important;
 }
