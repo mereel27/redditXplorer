@@ -116,3 +116,9 @@ pre {
     border-radius: 10px;
   }
 }
+
+.comment-body a {
+  white-space: normal;
+  display: inline;
+  padding-right: 0;
+}

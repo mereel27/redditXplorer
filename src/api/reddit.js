@@ -33,14 +33,19 @@ export const getPostData = async (permalink) => {
 
 export const getSubredditIcons = async (posts) => {
   const subreddits = posts.map((post) => post.subreddit_name_prefixed);
-  const icons = await Promise.all(
-    subreddits.map(async (name) => {
+  const sorted = [...new Set(subreddits)];
+  const uniqIcons = await Promise.all(
+    sorted.map(async (name) => {
         const subredditData = await fetch(`${API_ROOT}/${name}/about.json`);
         const jsonSubredditData = await subredditData.json();
-        return jsonSubredditData.data.icon_img || jsonSubredditData.data.community_icon.replace(/\?.*$/, '');
+        return [ name, jsonSubredditData.data.icon_img || jsonSubredditData.data.community_icon.replace(/\?.*$/, '') ]
     })
   );
   
+  const icons = subreddits.map(name => {
+    return Object.fromEntries(uniqIcons)[name];
+  })
+
   return icons;
 }
 
@@ -98,7 +103,6 @@ export const getNextComments = async (idList, permalink) => {
 
 export const getNextSearchResults = async (term, page) => {
   const response = await fetch(`${API_ROOT}/search.json?q=${term}&type=link&after=${page}`);
-  console.log(`${API_ROOT}/search.json?q=${term}&type=link&after=${page}`);
   const json = await response.json();
   const data = json.data.children.map((post) => post.data);
   const nextPage = json.data.after || '';

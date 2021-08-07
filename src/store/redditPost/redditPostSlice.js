@@ -72,11 +72,11 @@ export const redditSlice = createSlice({
             state.error = false;
         },
         [fetchPosts.fulfilled]: (state, action) => {
-            state.isLoading = false;
-            state.error = false;
             state.posts = action.payload.data[0];
             state.nextPage = action.payload.data[1];
             state.icons = action.payload.icons;
+            state.isLoading = false;
+            state.error = false;
         },
         [fetchPosts.rejected]: state => {
             state.isLoading = false;
@@ -87,13 +87,13 @@ export const redditSlice = createSlice({
             state.error = false;
         },
         [fetchSearchResults.fulfilled]: (state, action) => {
-            state.isLoading = false;
-            state.error = false;
             state.posts = action.payload.data[0];
             state.nextPage = action.payload.data[1];
-            state.searchURL = state.searchTerm;
             state.icons = action.payload.icons;
+            state.searchURL = state.searchTerm;
             state.searchTerm = '';
+            state.isLoading = false;
+            state.error = false;
         },
         [fetchSearchResults.rejected]: state => {
             state.isLoading = false;
@@ -104,11 +104,11 @@ export const redditSlice = createSlice({
             state.error = false;
         },
         [fetchNextPage.fulfilled]: (state, action) => {
-            state.nextPageLoading = false;
-            state.error = false;
             state.posts.push(...action.payload.data[0]);
             state.nextPage = action.payload.data[1];
             state.icons.push(...action.payload.icons);
+            state.nextPageLoading = false;
+            state.error = false;
         },
         [fetchNextPage.rejected]: state => {
             state.nextPageLoading = false;
@@ -119,11 +119,11 @@ export const redditSlice = createSlice({
             state.error = false;
         },
         [fetchNextSearchResults.fulfilled]: (state, action) => {
-            state.nextPageLoading = false;
-            state.error = false;
             state.posts.push(...action.payload.data[0]);
             state.nextPage = action.payload.data[1];
             state.icons.push(...action.payload.icons);
+            state.nextPageLoading = false;
+            state.error = false;
         },
         [fetchNextSearchResults.rejected]: state => {
             state.nextPageLoading = false;

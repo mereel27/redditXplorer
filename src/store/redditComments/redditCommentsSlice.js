@@ -46,8 +46,6 @@ export const redditCommentsSlice = createSlice({
             state.error = false;
         },
         [fetchPostData.fulfilled]: (state, action) => {
-            state.isLoading = false;
-            state.error = false;
             state.comments = action.payload[0];
             state.avatars = action.payload[1];
             const index = action.payload[0].length - 1;
@@ -55,6 +53,8 @@ export const redditCommentsSlice = createSlice({
             state.nextCommentsList = isMoreComments ? action.payload[0][index].children : [];
             const commentsToShow = state.nextCommentsList.length > 50 ? 50 : state.nextCommentsList.length;
             state.nextComments = state.nextCommentsList.splice(0, commentsToShow);
+            state.isLoading = false;
+            state.error = false;
         },
         [fetchPostData.rejected]: state => {
             state.isLoading = false;
@@ -66,12 +66,12 @@ export const redditCommentsSlice = createSlice({
             state.error = false;
         },
         [fetchNextComments.fulfilled]: (state, action) => {
-            state.nextCommentsLoading = false;
-            state.error = false;
             state.comments.push(...action.payload[0]);
             state.avatars.push(...action.payload[1]);
             const commentsToShow = state.nextCommentsList.length > 50 ? 50 : state.nextCommentsList.length;
             state.nextComments = state.nextCommentsList.splice(0, commentsToShow);
+            state.nextCommentsLoading = false;
+            state.error = false;
         },
         [fetchNextComments.rejected]: state => {
             state.nextCommentsLoading = false;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player/lazy';
-import avatar from '../../img/avatar.svg';
+import avatar from '../../img/avatar.webp';
 import { getTime, shortNumber, decode, getImgUrls } from '../../utils/utils';
 import ImageGallery from 'react-image-gallery';
 import { selectIcons } from '../../store/redditPost/redditPostSlice';

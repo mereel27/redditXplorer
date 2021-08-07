@@ -14,7 +14,7 @@ import {
 } from './redditCommentsSlice';
 import { TopicCard } from '../../components/TopicCard/TopicCard';
 import { LoadingCard } from '../../components/LoadingCard/LoadingCard';
-import fakeAvatar from '../../img/avatar.svg';
+import fakeAvatar from '../../img/avatar.webp';
 import { getTime, decode } from '../../utils/utils';
 import { BottomButtons } from '../../features/BottomButtons/BottomButtons';
 
