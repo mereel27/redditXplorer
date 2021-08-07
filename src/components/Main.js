@@ -4,7 +4,7 @@ import {
   selectPosts,
   fetchPosts,
   selectedCategory,
-  setCategory
+  setCategory,
 } from '../store/redditPost/redditPostSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -68,8 +68,8 @@ const Main = () => {
   };
 
   const handleCategoryClick = (e) => {
-    dispatch(fetchPosts(e.target.id));
     dispatch(setCategory(e.target.id));
+    dispatch(fetchPosts(e.target.id));
     dispatch(setShowComments(false));
   };
 

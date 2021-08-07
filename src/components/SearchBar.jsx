@@ -3,6 +3,7 @@ import {
   selectSearchTerm,
   fetchSearchResults,
   setSearchTerm,
+  setCategory
 } from '../store/redditPost/redditPostSlice';
 import { setShowComments } from '../store/redditComments/redditCommentsSlice';
 
@@ -14,6 +15,7 @@ export const SearchBar = () => {
     e.preventDefault();
     if (term.length === 0) return;
     dispatch(setShowComments(false));
+    dispatch(setCategory('search'));
     dispatch(fetchSearchResults(term));
   };
 

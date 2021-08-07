@@ -79,14 +79,6 @@ select,
     font-size: calc(12px + 0.8vmin);
 }
 
-
-.separator {
-  width: 3px;
-  height: 3px;
-  background-color: #525252;
-  border-radius: 50%;
-}
-
 .more-button-container, .back-button-container {
   width: 100%;
   display: flex;
@@ -158,16 +150,20 @@ select,
   display: none;
 }
 
+@media screen and (min-width: 640px) {
+  .Main {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  .top-nav-container {
+    border-radius: 10px;
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .Main {
     margin-left: 30%;
     margin-right: 30%;
   }
-
-  
-
-  .top-nav-container {
-    border-radius: 10px;
-  }
-
 }

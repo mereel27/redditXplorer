@@ -3,6 +3,8 @@ import ReactPlayer from 'react-player/lazy';
 import avatar from '../../img/avatar.svg';
 import { getTime, shortNumber, decode, getImgUrls } from '../../utils/utils';
 import ImageGallery from 'react-image-gallery';
+import { selectIcons } from '../../store/redditPost/redditPostSlice';
+import { useSelector } from 'react-redux';
 
 
 export const TopicCard = ({
@@ -10,24 +12,28 @@ export const TopicCard = ({
   post,
   getVideoUrl,
   handleClick,
-  isComments,
+  isComments
 }) => {
-  
+
+  const icons = useSelector(selectIcons);
   const imgClass = isComments ? 'full-img' : 'compact-img';
 
   return (
     <div key={index} className="topic-box">
-      <div className="post-author">
-        <img className="avatar" src={avatar} alt="" loading="lazy" />
-        <span>{post.subreddit_name_prefixed}</span>
-        <div className="separator"></div>
-        <span>{post.author}</span>
-        <div className="separator"></div>
-        <span>{getTime(post.created_utc)}</span>
+      <div className="post-info">
+        <img className="avatar" src={icons[index] || avatar} alt="" loading="lazy" />
+        <div className='post-author'>
+          <div className='reddit-name'>{post.subreddit_name_prefixed}</div>
+          <div>
+            <span>Posted by {post.author}</span>
+            <div className="separator"></div>
+            <span>{getTime(post.created_utc)}</span>
+          </div>
+        </div>
       </div>
 
       <h4 className="post-title">{post.title}</h4>
-      {post.link_flair_text && <div className='flair-text'>{post.link_flair_text}</div>}
+      {post.link_flair_text && <span className='flair-text'>{post.link_flair_text}</span>}
       <div className="topic-content">
         {post.post_hint === 'image' && !post.url.substring(-4).includes('gif') && (
           <div className="img-container">

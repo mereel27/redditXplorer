@@ -53,6 +53,7 @@ export const Comments = ({ posts, getVideoUrl, handleClick, isComments }) => {
         </button>
       </div>
       <TopicCard
+        index={id}
         post={posts[id]}
         handleClick={handleClick}
         getVideoUrl={getVideoUrl}

@@ -11,8 +11,8 @@ export const LoadingCard = ({ isComments }) => {
       <div className="content loading"></div>
     </div>
   ) : (
-    <div className="topic-box" style={{ padding: '1% 2%' }}>
-      <div className="post-author no-margin">
+    <div className="topic-box" style={{ padding: '2% 3%' }}>
+      <div className="post-info no-margin">
         <div className="avatar-loading loading"></div>
         <div className="author-loading loading"></div>
       </div>

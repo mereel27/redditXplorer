@@ -3,8 +3,10 @@ export const API_ROOT = 'https://www.reddit.com';
 export const getRedditPosts = async (category) => {
   const response = await fetch(`${API_ROOT}${category}.json`);
   const json = await response.json();
+  const data = json.data.children.map((post) => post.data);
+  const nextPage = json.data.after || '';
 
-  return [json.data.children.map((post) => post.data), json.data.after];
+  return [data, nextPage];
 };
 
 export const getPostData = async (permalink) => {
@@ -29,11 +31,26 @@ export const getPostData = async (permalink) => {
   return [data, avatars];
 };
 
+export const getSubredditIcons = async (posts) => {
+  const subreddits = posts.map((post) => post.subreddit_name_prefixed);
+  const icons = await Promise.all(
+    subreddits.map(async (name) => {
+        const subredditData = await fetch(`${API_ROOT}/${name}/about.json`);
+        const jsonSubredditData = await subredditData.json();
+        return jsonSubredditData.data.icon_img || jsonSubredditData.data.community_icon.replace(/\?.*$/, '');
+    })
+  );
+  
+  return icons;
+}
+
 export const getSearchResults = async (term) => {
   const response = await fetch(`${API_ROOT}/search.json?q=${term}&type=link`);
   const json = await response.json();
+  const data = json.data.children.map((post) => post.data);
+  const nextPage = json.data.after || '';
 
-  return json.data.children.map((post) => post.data);
+  return [data, nextPage];
 };
 
 export const getNextPage = async (page, category) => {
@@ -78,3 +95,13 @@ export const getNextComments = async (idList, permalink) => {
   );
   return [data, avatars];
 };
+
+export const getNextSearchResults = async (term, page) => {
+  const response = await fetch(`${API_ROOT}/search.json?q=${term}&type=link&after=${page}`);
+  console.log(`${API_ROOT}/search.json?q=${term}&type=link&after=${page}`);
+  const json = await response.json();
+  const data = json.data.children.map((post) => post.data);
+  const nextPage = json.data.after || '';
+  
+  return [data, nextPage];
+}

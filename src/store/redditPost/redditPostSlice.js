@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getRedditPosts, getSearchResults, getNextPage } from '../../api/reddit';
+import { getRedditPosts, getSearchResults, getNextPage, getSubredditIcons, getNextSearchResults } from '../../api/reddit';
 
 
 const initialState = {
@@ -8,24 +8,47 @@ const initialState = {
     isLoading: false,
     nextPageLoading: false,
     searchTerm: '',
+    searchURL: '',
     selectedCategory: '/r/popular',
-    nextPage: ''
+    nextPage: '',
+    icons: []
 };
 
 
 export const fetchPosts = createAsyncThunk(
     'reddit/fetchPosts',
-    async (category) => await getRedditPosts(category)
-);
-
-export const fetchSearchResults = createAsyncThunk(
-    'reddit/fetchSearchResults',
-    async (term) => await getSearchResults(term)
+    async (category) => {
+        const data = await getRedditPosts(category);
+        const icons = await getSubredditIcons(data[0]);
+        return  { data, icons };
+    }
 );
 
 export const fetchNextPage = createAsyncThunk(
     'reddit/fetchNextPage',
-    async ({nextPage, category}) => await getNextPage(nextPage, category)
+    async ({ nextPage, category }) => {
+        const data = await getNextPage(nextPage, category);
+        const icons = await getSubredditIcons(data[0]);
+        return  { data, icons };
+    }
+)
+
+export const fetchSearchResults = createAsyncThunk(
+    'reddit/fetchSearchResults',
+    async (term) => {
+        const data = await getSearchResults(term);
+        const icons = await getSubredditIcons(data[0]);
+        return  { data, icons };
+    }
+);
+
+export const fetchNextSearchResults = createAsyncThunk(
+    'reddit/fetchNextSearchResults',
+    async (_, { getState }) => {
+       const data = await getNextSearchResults(getState().reddit.searchURL, getState().reddit.nextPage);
+       const icons = await getSubredditIcons(data[0]);
+       return { data, icons };
+    }
 )
 
 
@@ -51,8 +74,9 @@ export const redditSlice = createSlice({
         [fetchPosts.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.error = false;
-            state.posts = action.payload[0];
-            state.nextPage = action.payload[1];
+            state.posts = action.payload.data[0];
+            state.nextPage = action.payload.data[1];
+            state.icons = action.payload.icons;
         },
         [fetchPosts.rejected]: state => {
             state.isLoading = false;
@@ -65,7 +89,10 @@ export const redditSlice = createSlice({
         [fetchSearchResults.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.error = false;
-            state.posts = action.payload;
+            state.posts = action.payload.data[0];
+            state.nextPage = action.payload.data[1];
+            state.searchURL = state.searchTerm;
+            state.icons = action.payload.icons;
             state.searchTerm = '';
         },
         [fetchSearchResults.rejected]: state => {
@@ -79,10 +106,26 @@ export const redditSlice = createSlice({
         [fetchNextPage.fulfilled]: (state, action) => {
             state.nextPageLoading = false;
             state.error = false;
-            state.posts.push(...action.payload[0]);
-            state.nextPage = action.payload[1];
+            state.posts.push(...action.payload.data[0]);
+            state.nextPage = action.payload.data[1];
+            state.icons.push(...action.payload.icons);
         },
         [fetchNextPage.rejected]: state => {
+            state.nextPageLoading = false;
+            state.error = true;
+        },
+        [fetchNextSearchResults.pending]: state => {
+            state.nextPageLoading = true;
+            state.error = false;
+        },
+        [fetchNextSearchResults.fulfilled]: (state, action) => {
+            state.nextPageLoading = false;
+            state.error = false;
+            state.posts.push(...action.payload.data[0]);
+            state.nextPage = action.payload.data[1];
+            state.icons.push(...action.payload.icons);
+        },
+        [fetchNextSearchResults.rejected]: state => {
             state.nextPageLoading = false;
             state.error = true;
         }
@@ -96,4 +139,5 @@ export const selectedCategory = state => state.reddit.selectedCategory;
 export const isLoading = state => state.reddit.isLoading;
 export const selectNextPage = state => state.reddit.nextPage;
 export const nextPageLoading = state => state.reddit.nextPageLoading;
+export const selectIcons = state => state.reddit.icons;
 export default redditSlice.reducer;

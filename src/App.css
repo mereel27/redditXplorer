@@ -124,23 +124,24 @@ button {
   box-shadow: #00000026 1.95px 1.95px 2.6px;
 }
 
+@media screen and (min-width: 640px) {
+  .App-header {
+    padding-left: 20%;
+    padding-right: 20%;
+    height: calc(20px + 6vmin);
+  }
+  input, #search-button {
+    height: 50%;
+  }
+
+  .search-container {
+    flex-grow: 0;
+  }
+}
 
 @media screen and (min-width: 1024px) {
   .App-header {
       padding-left: 30%;
       padding-right: 30%;
-      height: calc(20px + 6vmin);
   }
-  .search-container {
-    flex-grow: 0;
-  }
-
-  input, #search-button {
-    height: 50%;
-  }
-
-  .left-navigation-bar{
-    display: block;
-  }
-
 }

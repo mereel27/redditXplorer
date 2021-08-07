@@ -2,7 +2,7 @@ import React from 'react';
 import './Topics.css';
 import { TopicCard } from '../TopicCard/TopicCard';
 import { useSelector, useDispatch } from 'react-redux';
-import { isLoading, selectNextPage, nextPageLoading, fetchNextPage, selectedCategory } from '../../store/redditPost/redditPostSlice';
+import { isLoading, selectNextPage, nextPageLoading, fetchNextPage, selectedCategory, fetchNextSearchResults } from '../../store/redditPost/redditPostSlice';
 import { LoadingCard } from '../LoadingCard/LoadingCard';
 import { randomNumber } from '../../utils/utils';
 import { BottomButtons } from '../../features/BottomButtons/BottomButtons';
@@ -16,7 +16,11 @@ export const Topics = ({ posts, handleClick, getVideoUrl }) => {
     const dispatch = useDispatch();
 
     const handleNextPage = () => {
-        dispatch(fetchNextPage({ nextPage, category }));
+        if (category === 'search') {
+            dispatch(fetchNextSearchResults());
+        } else {
+            dispatch(fetchNextPage({ nextPage, category }));
+        }
       };
 
     return (
