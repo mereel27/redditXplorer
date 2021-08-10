@@ -17,6 +17,7 @@ import { LoadingCard } from '../../components/LoadingCard/LoadingCard';
 import fakeAvatar from '../../img/avatar.webp';
 import { getTime, decode } from '../../utils/utils';
 import { BottomButtons } from '../../features/BottomButtons/BottomButtons';
+import { Replies } from '../../features/Replies/Replies';
 
 export const Comments = ({ posts, getVideoUrl, handleClick, isComments }) => {
   const comments = useSelector(selectAllComments);
@@ -79,17 +80,22 @@ export const Comments = ({ posts, getVideoUrl, handleClick, isComments }) => {
                       <span>{getTime(comment.created_utc)}</span>
                     </div>
                     <div className='comment-container'>
-                      <div className='voting-buttons'>
-                        <i className="bi bi-arrow-up-short icon vote-up"></i>
-                          <span className='score'>{comment.score}</span>
-                        <i className="bi bi-arrow-down-short icon vote-down"></i>
-                      </div>
+                      <button className="border"></button>
                       <div className='comment-body'
                         dangerouslySetInnerHTML={{
                           __html: decode(comment.body_html),
                         }}
                       ></div>
-                    </div>
+                      <div className='comment-info-container'>
+
+                        <div className='voting-buttons'>
+                          <i className="bi bi-chevron-down icon vote-down"></i>
+                            <span className='score'>{comment.score}</span>
+                          <i className="bi bi-chevron-up icon vote-up"></i>
+                        </div>
+                      </div>
+                      {comment.replies && <Replies replies={comment.replies.data.children} />}
+                    </div> 
                   </div>
                 )
             )}

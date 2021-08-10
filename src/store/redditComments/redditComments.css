@@ -26,7 +26,7 @@
 }
 
 .comments-box >:not(:last-child) {
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
 }
 
 .comment {
@@ -35,13 +35,21 @@
   flex-direction: column;
 }
 
+.comment-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* border-left: 2px solid #eef0f2; */
+  margin-left: 0.85rem;
+}
+
 .author-info {
   font-size: 12px;
   color: #525252;
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: 1vmin;
+  margin-bottom: 0.5rem;
 }
 
 .author-info > :not(.avatar) {
@@ -70,23 +78,29 @@ pre {
     padding: 1%;
 }
 
-.comment-container {
+.comment-info-container  {
   display: flex;
+  width: 100%;
+}
+
+.replies {
+  position: relative;
+  max-width: 100%;
+  margin-left: 0.75rem;
+  padding-top: 0.5rem;
 }
 
 .voting-buttons {
   display: flex;
-  flex-direction: column;
   width: fit-content;
   align-items: center;
-}
-
-.voting-buttons span {
-  padding: 2px 0;
+  margin-left: auto;
+  font-size: 20px;
 }
 
 .comment-body {
-  padding: 0 10px;
+  padding-right: 1rem;
+  padding-left: 1.65rem;
   width: 100%;
   font-size: 15px;
 }
@@ -99,8 +113,9 @@ pre {
 
 .score {
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   color: #525252;
+  padding: 0 10px;
 }
 
 .no-comments, .error-message {
@@ -121,4 +136,24 @@ pre {
   white-space: normal;
   display: inline;
   padding-right: 0;
+}
+
+.voting-buttons .vote-up,
+.voting-buttons .vote-down {
+  font-size: 20px;
+}
+
+.border {
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.border:hover {
+  background-color: #ff4500;
+  cursor: default;
 }

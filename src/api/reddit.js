@@ -9,24 +9,27 @@ export const getRedditPosts = async (category) => {
   return [data, nextPage];
 };
 
+export const getAvatar = async (name) => {
+  if (name !== '[deleted]' && name !== undefined) {
+    const profileData = await fetch(`${API_ROOT}/user/${name}/about.json`);
+    const jsonProfileData = await profileData.json();
+    if (!jsonProfileData.data.is_suspended) {
+      return jsonProfileData.data.icon_img.replace(/\?.*$/, '');
+    } else {
+      return '';
+    }
+  } else {
+    return '';
+  }
+};
+
 export const getPostData = async (permalink) => {
   const response = await fetch(`${API_ROOT}${permalink}.json`);
   const json = await response.json();
   const data = json[1].data.children.map((post) => post.data);
   const names = data.map((comment) => comment.author);
   const avatars = await Promise.all(
-    names.map(async (name) => {
-      if (name !== '[deleted]' && name !== undefined) {
-        const profileData = await fetch(`${API_ROOT}/user/${name}/about.json`);
-        const jsonProfileData = await profileData.json();
-        if (!jsonProfileData.data.is_suspended) {
-          return jsonProfileData.data.icon_img.replace(/\?.*$/, '');
-        }
-        return '';
-      } else {
-        return '';
-      }
-    })
+    names.map(async (name) => await getAvatar(name))
   );
   return [data, avatars];
 };
@@ -48,7 +51,7 @@ export const getSubredditIcons = async (posts) => {
         ? jsonSubredditData.data.icon_img.replace(/\?.*$/, '')
         : jsonSubredditData.data.icon_img ||
           jsonSubredditData.data.community_icon.replace(/\?.*$/, '');
-      return [ name, iconURL ];
+      return [name, iconURL];
     })
   );
 
@@ -94,19 +97,7 @@ export const getNextComments = async (idList, permalink) => {
   const names = data.map((comment) => comment.author);
 
   const avatars = await Promise.all(
-    names.map(async (name) => {
-      if (name !== '[deleted]' && name !== undefined) {
-        const profileData = await fetch(`${API_ROOT}/user/${name}/about.json`);
-        const jsonProfileData = await profileData.json();
-        if (!jsonProfileData.data.is_suspended) {
-          return jsonProfileData.data.icon_img.replace(/\?.*$/, '');
-        } else {
-          return '';
-        }
-      } else {
-        return '';
-      }
-    })
+    names.map(async (name) => await getAvatar(name))
   );
   return [data, avatars];
 };
