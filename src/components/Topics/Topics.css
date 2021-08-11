@@ -301,7 +301,7 @@ p {
 }
 
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 640px) {
   .compact-img {
     max-height: 60vh;
     object-fit: contain;
