@@ -36,7 +36,7 @@ export const Topics = ({ posts, handleClick, getVideoUrl }) => {
             ))}
             <BottomButtons 
                 loading={nextLoading}
-                ready={posts.length > 0}
+                ready={posts.length > 0 && !loading}
                 isMore={nextPage.length > 0} 
                 moreClick={handleNextPage}
             />

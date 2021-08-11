@@ -10,13 +10,14 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 2vmin;
-  /* box-shadow: 0 1px 2px 0 #b1b1b1; */
+  margin-bottom: 1.5rem;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   word-wrap: break-word;
   overflow: hidden;
   line-height: 1.3rem;
-  padding: 2%;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+  position: relative;
 }
 
 #back-button {
@@ -25,21 +26,24 @@
   margin-left: 1%;
 }
 
-.comments-box >:not(:last-child) {
-  margin-bottom: 1rem;
+.comments-box > :not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.comments-box > .comment {
+  margin-right: 1.2rem;
 }
 
 .comment {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  max-width: 100%;
+  margin-left: 0.75rem;
+  margin-top: 0.75rem;
 }
 
 .comment-container {
   position: relative;
   display: flex;
   flex-direction: column;
-  /* border-left: 2px solid #eef0f2; */
   margin-left: 0.85rem;
 }
 
@@ -66,19 +70,20 @@
 }
 
 blockquote {
-  background-color: #eeeeeecc;
+  background-color: #eef0f2;
   border-left: 4px solid grey;
-  padding: 1%;
+  padding: 0.6em 0.5em 0.015em 1em;
   margin: 5px 0;
+  font-style: italic;
 }
 
 pre {
-    overflow: auto;
-    background-color: #f6f7f8;
-    padding: 1%;
+  overflow: auto;
+  background-color: #f6f7f8;
+  padding: 1%;
 }
 
-.comment-info-container  {
+.comment-info-container {
   display: flex;
   width: 100%;
 }
@@ -99,7 +104,7 @@ pre {
 }
 
 .comment-body {
-  padding-right: 1rem;
+  padding-right: 0.5rem;
   padding-left: 1.65rem;
   width: 100%;
   font-size: 15px;
@@ -118,12 +123,13 @@ pre {
   padding: 0 10px;
 }
 
-.no-comments, .error-message {
+.no-comments,
+.error-message {
   text-align: center;
 }
 
 .error-message {
-  color: rgb(230, 51, 51)
+  color: rgb(230, 51, 51);
 }
 
 @media screen and (min-width: 1024px) {

@@ -49,8 +49,8 @@ export const redditCommentsSlice = createSlice({
             state.comments = action.payload[0];
             state.avatars = action.payload[1];
             const index = action.payload[0].length - 1;
-            const isMoreComments = action.payload[0].length > 0 && action.payload[0][index].children;
-            state.nextCommentsList = isMoreComments ? action.payload[0][index].children : [];
+            const isMoreComments = action.payload[0].length > 0 && action.payload[0][index].data.children;
+            state.nextCommentsList = isMoreComments ? action.payload[0][index].data.children : [];
             const commentsToShow = state.nextCommentsList.length > 50 ? 50 : state.nextCommentsList.length;
             state.nextComments = state.nextCommentsList.splice(0, commentsToShow);
             state.isLoading = false;
@@ -67,7 +67,7 @@ export const redditCommentsSlice = createSlice({
         },
         [fetchNextComments.fulfilled]: (state, action) => {
             state.comments.push(...action.payload[0]);
-            state.avatars.push(...action.payload[1]);
+            state.avatars = Object.assign(state.avatars, action.payload[1]);
             const commentsToShow = state.nextCommentsList.length > 50 ? 50 : state.nextCommentsList.length;
             state.nextComments = state.nextCommentsList.splice(0, commentsToShow);
             state.nextCommentsLoading = false;

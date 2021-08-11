@@ -1,33 +1,32 @@
 import { decode, getTime } from "../../utils/utils";
 import fakeAvatar from "../../img/avatar.webp"
 
-export const Replies = ({replies}) => {
-  console.log(replies);
+export const Replies = ({comments, avatars}) => {
     return (
-      replies.map(reply => (
-        reply.data.author &&
-        <div className='replies'>
+      comments.map((comment, index) => (
+        comment.data.author &&
+        <div key={index} className="comment">
           <div className="author-info">
             <img
               className="avatar"
-              src={fakeAvatar}
+              src={avatars[comment.data.author] || fakeAvatar}
               alt=""
             />
-            <span className="author-name">{reply.data.author}</span>
+            <span className="author-name">{comment.data.author}</span>
             <div className="separator"></div>
-            <span>{getTime(reply.data.created_utc)}</span>
+            <span>{getTime(comment.data.created_utc)}</span>
           </div>
           <div className="comment-container">
             <button className="border"></button>
-            {reply.data.body_html && <div className='comment-body'dangerouslySetInnerHTML={{__html: decode(reply.data.body_html)}}></div>}
+            {comment.data.body_html && <div className='comment-body'dangerouslySetInnerHTML={{__html: decode(comment.data.body_html)}}></div>}
             <div className='comment-info-container'>
               <div className='voting-buttons'>
                 <i className="bi bi-chevron-down icon vote-down"></i>
-                  <span className='score'>{reply.data.score || 0}</span>
+                  <span className='score'>{comment.data.score}</span>
                 <i className="bi bi-chevron-up icon vote-up"></i>
               </div>
             </div>
-            <div>{reply.data.replies && <Replies replies={reply.data.replies.data.children} />}</div>
+            {comment.data.replies && <Replies comments={comment.data.replies.data.children} avatars={avatars}/>}
           </div>
         </div>
       ))

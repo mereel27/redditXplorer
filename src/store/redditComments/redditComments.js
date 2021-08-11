@@ -14,8 +14,6 @@ import {
 } from './redditCommentsSlice';
 import { TopicCard } from '../../components/TopicCard/TopicCard';
 import { LoadingCard } from '../../components/LoadingCard/LoadingCard';
-import fakeAvatar from '../../img/avatar.webp';
-import { getTime, decode } from '../../utils/utils';
 import { BottomButtons } from '../../features/BottomButtons/BottomButtons';
 import { Replies } from '../../features/Replies/Replies';
 
@@ -65,44 +63,12 @@ export const Comments = ({ posts, getVideoUrl, handleClick, isComments }) => {
           ? Array(10).fill(<LoadingCard isComments={isComments} />)
           : error ? (<div className="error-message">Some error occured, please try again...</div>)
           : comments.length === 0 ? (<div className='no-comments'>There are no comments yet...</div>)
-          : comments.map(
-              (comment, index) =>
-                comment.author && (
-                  <div key={index} className="comment">
-                    <div className="author-info">
-                      <img
-                        className="avatar"
-                        src={avatars[index] || fakeAvatar}
-                        alt=""
-                      />
-                      <span className="author-name">{comment.author}</span>
-                      <div className="separator"></div>
-                      <span>{getTime(comment.created_utc)}</span>
-                    </div>
-                    <div className='comment-container'>
-                      <button className="border"></button>
-                      <div className='comment-body'
-                        dangerouslySetInnerHTML={{
-                          __html: decode(comment.body_html),
-                        }}
-                      ></div>
-                      <div className='comment-info-container'>
-
-                        <div className='voting-buttons'>
-                          <i className="bi bi-chevron-down icon vote-down"></i>
-                            <span className='score'>{comment.score}</span>
-                          <i className="bi bi-chevron-up icon vote-up"></i>
-                        </div>
-                      </div>
-                      {comment.replies && <Replies replies={comment.replies.data.children} />}
-                    </div> 
-                  </div>
-                )
-            )}
+          : <Replies comments={comments} avatars={avatars}/>
+        }
       </div>
       <BottomButtons
         loading={nextLoading}
-        ready={comments.length > 0}
+        ready={comments.length > 0 && !commentsLoading}
         isMore={nextComments.length > 0}
         moreClick={handleNextComments}
       />

@@ -12,7 +12,7 @@ export const BottomButtons = ({ moreClick, loading, ready, isMore }) => {
       <div id="loading">
         <div id="loading-img"></div>
       </div>
-      ) : (
+      ) : ready ? (
       <div className="more-button-container">
         {isMore ? (
           <button
@@ -24,7 +24,7 @@ export const BottomButtons = ({ moreClick, loading, ready, isMore }) => {
           </button>
         ) : null }
       </div>
-      )}
+      ): null}
     </>
   );
 };

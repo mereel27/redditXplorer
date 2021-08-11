@@ -9,28 +9,46 @@ export const getRedditPosts = async (category) => {
   return [data, nextPage];
 };
 
-export const getAvatar = async (name) => {
-  if (name !== '[deleted]' && name !== undefined) {
-    const profileData = await fetch(`${API_ROOT}/user/${name}/about.json`);
-    const jsonProfileData = await profileData.json();
-    if (!jsonProfileData.data.is_suspended) {
-      return jsonProfileData.data.icon_img.replace(/\?.*$/, '');
-    } else {
-      return '';
+export const getAvatars = async (data) => {
+  let names = [];
+  const getNames = (data) => {
+    const temp = data.map((comment) => comment.data.author);
+    names.push(...temp);
+    const nextData = [];
+    data.forEach((comment) =>
+      comment.data.author && comment.data.replies
+        ? nextData.push(...comment.data.replies.data.children)
+        : null
+    );
+    if (nextData.length > 0) {
+      getNames(nextData);
     }
-  } else {
-    return '';
-  }
+  };
+  getNames(data);
+  const avatars = await Promise.all(
+    [...new Set(names)]
+      .filter((name) => name !== '[deleted]' && name !== undefined)
+      .map(async (name) => {
+        const profileData = await fetch(`${API_ROOT}/user/${name}/about.json`);
+        const jsonProfileData = await profileData.json();
+        if (!jsonProfileData.data.is_suspended) {
+          return [name, jsonProfileData.data.icon_img.replace(/\?.*$/, '')];
+        } else {
+          return [];
+        }
+      })
+  );
+
+  return Object.fromEntries(avatars);
 };
 
 export const getPostData = async (permalink) => {
   const response = await fetch(`${API_ROOT}${permalink}.json`);
   const json = await response.json();
-  const data = json[1].data.children.map((post) => post.data);
-  const names = data.map((comment) => comment.author);
-  const avatars = await Promise.all(
-    names.map(async (name) => await getAvatar(name))
-  );
+  const data = json[1].data.children;
+
+  const avatars = await getAvatars(data);
+
   return [data, avatars];
 };
 
@@ -86,19 +104,15 @@ export const getNextComments = async (idList, permalink) => {
       const commentData = await fetch(`${API_ROOT}${permalink}${link}.json`);
       const jsonCommentData = await commentData.json();
       if (jsonCommentData[1].data.children.length > 0) {
-        return jsonCommentData[1].data.children[0].data;
+        return jsonCommentData[1].data.children[0];
       } else {
         return null;
       }
     })
   );
-
   const data = commentsList.filter((comment) => comment !== null);
-  const names = data.map((comment) => comment.author);
+  const avatars = await getAvatars(data);
 
-  const avatars = await Promise.all(
-    names.map(async (name) => await getAvatar(name))
-  );
   return [data, avatars];
 };
 

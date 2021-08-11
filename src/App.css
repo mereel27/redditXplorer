@@ -6,7 +6,6 @@
   margin: 0;
   align-items: center;
   padding: 0 1vmin;
-  /* box-shadow: 0 0px 2px 1px #b1b1b1; */
   box-shadow: #00000026 1.95px 1.95px 2.6px;
   position: sticky;
   top: 0;
@@ -93,26 +92,9 @@ button {
   cursor: pointer;
 }
 
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
-} */
 
 .App-link {
   color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
 }
 
 .left-navigation-bar {
@@ -128,10 +110,10 @@ button {
   .App-header {
     padding-left: 20%;
     padding-right: 20%;
-    height: calc(20px + 6vmin);
+    height: 4rem;
   }
   input, #search-button {
-    height: 50%;
+    height: 65%;
   }
 
   .search-container {
