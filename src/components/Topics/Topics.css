@@ -32,6 +32,10 @@
   margin: 0 3%;
 }
 
+.post-title {
+  word-wrap: break-word;
+}
+
 .post-author {
   width: 100%;
   font-size: 13px;
@@ -301,6 +305,21 @@ p {
   border-radius: 50%;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+}
+
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #eef0f2;
+}
 
 @media screen and (min-width: 640px) {
   .compact-img {
@@ -321,20 +340,4 @@ p {
     max-height: 60vh;
   }
 
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 8px;
-}
-
-td, th {
-  border: 1px solid #999;
-  padding: 0.5rem;
-  border-collapse: collapse;
-}
-
-th {
-  background-color: #eef0f2;
 }
