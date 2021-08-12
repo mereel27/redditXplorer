@@ -99,18 +99,19 @@
 }
 
 a {
-  display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   position: relative;
   max-width: 50%;
-  padding-right: 20px;
   text-decoration: none;
   font-size: 13px;
   color: #2a56ce;
   font-weight: 500;
-  vertical-align: text-bottom;
+}
+
+.content-link {
+  padding-right: 20px;
 }
 
 a span {
