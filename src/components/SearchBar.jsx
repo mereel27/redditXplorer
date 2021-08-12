@@ -17,6 +17,7 @@ export const SearchBar = () => {
     dispatch(setShowComments(false));
     dispatch(setCategory('search'));
     dispatch(fetchSearchResults(term));
+    window.scrollTo(0, 0);
   };
 
   const handleChange = (e) => {
