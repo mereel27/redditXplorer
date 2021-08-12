@@ -77,7 +77,8 @@ export const TopicCard = ({
             <i className="bi bi-box-arrow-in-right"></i>
           </a>
         )}
-        {post.is_video && (
+
+        {post.is_video && post.media && (
           <div
             className="video-container"
             style={{ '--aspect-ratio': '3 / 4' }}
