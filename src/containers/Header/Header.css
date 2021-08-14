@@ -31,7 +31,7 @@
 .search-container {
   background-color: white;
   height: 100%;
-  margin: 0 2%;
+  margin: 0 2% 0 2%;
   flex-grow: 1;
 }
 
@@ -118,6 +118,7 @@ button {
 
   .search-container {
     flex-grow: 0;
+    margin: 0 0 0 2%;
   }
 }
 

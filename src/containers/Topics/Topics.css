@@ -149,7 +149,6 @@ a:hover {
 .compact-img,
 .full-img {
   max-width: 100%;
-  border-radius: 2px;
 }
 
 .compact-img {
