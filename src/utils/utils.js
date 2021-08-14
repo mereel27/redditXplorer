@@ -40,3 +40,10 @@ export const getImgUrls = (items, metadata) => {
   });
   return imgArray;
 };
+
+export const getVideoUrl = (link) => {
+  let url =  link.match(/(?:youtube(?:-nocookie)?\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  if(url) {
+    return `https://www.youtube-nocookie.com/embed/${url[1]}`;
+  }
+};

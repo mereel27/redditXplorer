@@ -1,23 +1,24 @@
 import React, { useEffect } from 'react';
-import './Main.css';
+import './MainContainer.css';
 import {
   selectPosts,
   fetchPosts,
   selectedCategory,
   setCategory,
-} from '../store/redditPost/redditPostSlice';
+} from '../../features/redditPostSlice/redditPostSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchPostData,
   showComments,
   setPostId,
   setShowComments
-} from '../store/redditComments/redditCommentsSlice';
-import { Topics } from './Topics/Topics';
-import { Comments } from '../store/redditComments/redditComments';
+} from '../../features/redditCommentsSlice/redditCommentsSlice';
+import { Navigation } from '../../components/Navigation/Navigation';
+import { Topics } from '../Topics/Topics';
+import { Comments } from '../Comments/Comments';
 
 
-const Main = () => {
+const MainContainer = () => {
   const redditPost = useSelector(selectPosts);
   const dispatch = useDispatch();
   const isComments = useSelector(showComments);
@@ -54,13 +55,6 @@ const Main = () => {
     }
   };
 
-  const getVideoUrl = (link) => {
-    let url =  link.match(/(?:youtube(?:-nocookie)?\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-    if(url) {
-      return `https://www.youtube-nocookie.com/embed/${url[1]}`;
-    }
-  };
-
   const handleMoreClick = (e) => {
     dispatch(fetchPosts(e.target.value));
     dispatch(setCategory(e.target.value));
@@ -75,54 +69,21 @@ const Main = () => {
 
   return (
     <div className="Main">
-      <div className="top-nav-container">
-        <nav className="top-nav-bar">
-          <span id="/top" onClick={handleCategoryClick}>
-            Top
-          </span>
-          <span id="/r/popular" onClick={handleCategoryClick}>
-            Popular
-          </span>
-          <span id="/r/all" onClick={handleCategoryClick}>
-            All
-          </span>
-          <span id="/new" onClick={handleCategoryClick}>
-            New
-          </span>
-
-          <select
-            onChange={handleMoreClick}
-            name="more"
-            id="more"
-            placeholder="More"
-          >
-            <option selected disabled hidden>
-              More
-            </option>
-            <option value="/r/funny">Funny</option>
-            <option value="/r/askReddit">Ask</option>
-            <option value="/r/gaming">Gaming</option>
-            <option value="/r/aww">Aww</option>
-            <option value="/r/pics">Pics</option>
-            <option value="/r/music">Music</option>
-            <option value="/r/videos">Videos</option>
-          </select>
-        </nav>
-      </div>
-      
+      <Navigation 
+        handleCategoryClick={handleCategoryClick}
+        handleMoreClick={handleMoreClick}
+      />
       <div className="content-box">
         {isComments ? (
           <Comments
             posts={redditPost}
             handleClick={handleCommentsClick}
-            getVideoUrl={getVideoUrl}
             isComments={isComments}
           />
         ) : (
           <Topics
             posts={redditPost}
             handleClick={handleCommentsClick}
-            getVideoUrl={getVideoUrl}
           />
         )}
       </div>
@@ -130,4 +91,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MainContainer;

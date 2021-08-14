@@ -5,7 +5,7 @@ export const Replies = ({comments, avatars}) => {
     return (
       comments.map((comment, index) => (
         comment.data.author &&
-        <div key={index} className="comment">
+        <div key={comment.data.id} className="comment">
           <div className="author-info">
             <img
               className="avatar"

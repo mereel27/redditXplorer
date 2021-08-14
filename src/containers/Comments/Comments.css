@@ -40,6 +40,11 @@
   margin-top: 0.75rem;
 }
 
+.comment-body img {
+  width: 100% !important;
+  height: auto;
+}
+
 .comment-container {
   position: relative;
   display: flex;
@@ -75,6 +80,7 @@ blockquote {
   padding: 0.6em 0.5em 0.015em 1em;
   margin: 5px 0;
   font-style: italic;
+  overflow: hidden;
 }
 
 pre {

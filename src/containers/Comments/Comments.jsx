@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import './redditComments.css';
+import './Comments.css';
 import {
   selectPostId,
   selectAvatars,
@@ -11,13 +11,14 @@ import {
   setShowComments,
   nextCommentsLoading,
   isError,
-} from './redditCommentsSlice';
+} from '../../features/redditCommentsSlice/redditCommentsSlice';
+import { selectIcons } from '../../features/redditPostSlice/redditPostSlice';
 import { TopicCard } from '../../components/TopicCard/TopicCard';
 import { LoadingCard } from '../../components/LoadingCard/LoadingCard';
-import { BottomButtons } from '../../features/BottomButtons/BottomButtons';
-import { Replies } from '../../features/Replies/Replies';
+import { BottomButtons } from '../../components/BottomButtons/BottomButtons';
+import { Replies } from '../../components/Replies/Replies';
 
-export const Comments = ({ posts, getVideoUrl, handleClick, isComments }) => {
+export const Comments = ({ posts, getVideoUrl, isComments }) => {
   const comments = useSelector(selectAllComments);
   const id = useSelector(selectPostId);
   const avatars = useSelector(selectAvatars);
@@ -25,6 +26,7 @@ export const Comments = ({ posts, getVideoUrl, handleClick, isComments }) => {
   const nextLoading = useSelector(nextCommentsLoading);
   const dispatch = useDispatch();
   const nextComments = useSelector(selectNextComments);
+  const icons = useSelector(selectIcons);
   const permalink = posts[id].permalink;
   const error = useSelector(isError);
 
@@ -54,9 +56,9 @@ export const Comments = ({ posts, getVideoUrl, handleClick, isComments }) => {
       <TopicCard
         index={id}
         post={posts[id]}
-        handleClick={handleClick}
         getVideoUrl={getVideoUrl}
         isComments={isComments}
+        icons={icons}
       />
       <div className="comments-box">
         {commentsLoading

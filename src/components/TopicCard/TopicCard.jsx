@@ -1,19 +1,15 @@
-import React from 'react';
 import ReactPlayer from 'react-player/lazy';
-import avatar from '../../img/avatar.webp';
-import { getTime, shortNumber, decode, getImgUrls } from '../../utils/utils';
 import ImageGallery from 'react-image-gallery';
-import { selectIcons } from '../../store/redditPost/redditPostSlice';
-import { useSelector } from 'react-redux';
+import avatar from '../../img/avatar.webp';
+import { getTime, shortNumber, decode, getImgUrls, getVideoUrl } from '../../utils/utils';
 
 export const TopicCard = ({
   index,
   post,
-  getVideoUrl,
+  icons,
   handleClick,
-  isComments,
+  isComments
 }) => {
-  const icons = useSelector(selectIcons);
   const imgClass = isComments ? 'full-img' : 'compact-img';
 
   return (
@@ -80,7 +76,7 @@ export const TopicCard = ({
 
         {post.is_video && post.media && (
           <div
-            className="video-container"
+            className="yt-container"
             style={{ '--aspect-ratio': '3 / 4' }}
           >
             <ReactPlayer
@@ -93,13 +89,14 @@ export const TopicCard = ({
             />
           </div>
         )}
-        {post.domain !== 'gfycat.com' &&
+        {!post.media_embed.content &&
           post.preview &&
           post.preview.reddit_video_preview &&
           post.preview.reddit_video_preview.is_gif && (
             <div className="img-container">
               <video
                 src={post.preview.reddit_video_preview.fallback_url}
+                loop
                 controls
                 preload="meta"
               ></video>
@@ -110,7 +107,7 @@ export const TopicCard = ({
           post.media_embed &&
           post.media_embed.content && (
             <div
-              className="img-container"
+              className="yt-container"
               dangerouslySetInnerHTML={{
                 __html: decode(post.media_embed.content),
               }}
@@ -142,7 +139,7 @@ export const TopicCard = ({
       <div className="info">
         <div
           className={isComments ? 'comment-info-off' : 'comment-info'}
-          onClick={() => handleClick(post.permalink, index)}
+          onClick={!isComments ? () => handleClick(post.permalink, index) : null}
         >
           <i className="bi bi-chat icon"></i>
           <span>{shortNumber(post.num_comments)}</span>

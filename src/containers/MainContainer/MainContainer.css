@@ -93,7 +93,7 @@ select,
 }
 
 #loading-img {
-  background-image: url('../img/loading.svg');
+  background-image: url('../../img/loading.svg');
   background-size: contain;
   width: 50px;
   height: 50px;
