@@ -1,17 +1,18 @@
-export const Navigation = ({handleCategoryClick, handleMoreClick}) => {
+export const Navigation = ({handleCategoryClick, handleMoreClick, category}) => {
+  const more = ["/r/funny", "/r/askReddit", "/r/gaming", "/r/aww", "/r/pics", "/r/music", "/r/videos"];
   return (
     <div className="top-nav-container">
       <nav className="top-nav-bar">
-        <span id="/top" onClick={handleCategoryClick}>
+        <span id="/top" onClick={handleCategoryClick} className={category === '/top' ? 'selected' : ''}>
           Top
         </span>
-        <span id="/r/popular" onClick={handleCategoryClick}>
+        <span id="/r/popular" onClick={handleCategoryClick} className={category === '/r/popular' ? 'selected' : ''}>
           Popular
         </span>
-        <span id="/r/all" onClick={handleCategoryClick}>
+        <span id="/r/all" onClick={handleCategoryClick} className={category === '/r/all' ? 'selected' : ''}>
           All
         </span>
-        <span id="/new" onClick={handleCategoryClick}>
+        <span id="/new" onClick={handleCategoryClick} className={category === '/new' ? 'selected' : ''}>
           New
         </span>
 
@@ -20,6 +21,7 @@ export const Navigation = ({handleCategoryClick, handleMoreClick}) => {
           name="more"
           id="more"
           placeholder="More"
+          className={more.includes(category) ? 'selected' : ''}
         >
           <option selected disabled hidden>
             More

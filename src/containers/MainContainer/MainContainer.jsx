@@ -72,6 +72,7 @@ const MainContainer = () => {
       <Navigation 
         handleCategoryClick={handleCategoryClick}
         handleMoreClick={handleMoreClick}
+        category={category}
       />
       <div className="content-box">
         {isComments ? (
