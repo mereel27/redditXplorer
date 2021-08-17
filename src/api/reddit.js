@@ -31,7 +31,7 @@ export const getAvatars = async (data) => {
       .map(async (name) => {
         const profileData = await fetch(`${API_ROOT}/user/${name}/about.json`);
         const jsonProfileData = await profileData.json();
-        if (!jsonProfileData.data.is_suspended) {
+        if (profileData.ok && !jsonProfileData.data.is_suspended) {
           return [name, jsonProfileData.data.icon_img.replace(/\?.*$/, '')];
         } else {
           return [];

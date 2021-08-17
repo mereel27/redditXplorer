@@ -9,7 +9,7 @@ const initialState = {
     nextPageLoading: false,
     searchTerm: '',
     searchURL: '',
-    selectedCategory: '/r/popular',
+    selectedCategory: '/top',
     nextPage: '',
     icons: []
 };
