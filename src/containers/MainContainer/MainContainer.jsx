@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './MainContainer.css';
 import {
   selectPosts,
@@ -6,17 +7,15 @@ import {
   selectedCategory,
   setCategory,
 } from '../../features/redditPostSlice/redditPostSlice';
-import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchPostData,
   showComments,
   setPostId,
-  setShowComments
+  setShowComments,
 } from '../../features/redditCommentsSlice/redditCommentsSlice';
 import { Navigation } from '../../components/Navigation/Navigation';
 import { Topics } from '../Topics/Topics';
 import { Comments } from '../Comments/Comments';
-
 
 const MainContainer = () => {
   const redditPost = useSelector(selectPosts);
@@ -33,14 +32,15 @@ const MainContainer = () => {
     let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
       const button = document.getElementById('to-top-button');
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
       if (scrollTop > lastScrollTop || window.scrollY === 0) {
         button.className = 'red-button hidden';
       } else if (button) {
         button.className = 'red-button';
       }
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    })
+    });
   }, []);
 
   const handleCommentsClick = (permalink, index) => {
@@ -69,7 +69,7 @@ const MainContainer = () => {
 
   return (
     <div className="Main">
-      <Navigation 
+      <Navigation
         handleCategoryClick={handleCategoryClick}
         handleMoreClick={handleMoreClick}
         category={category}
@@ -82,10 +82,7 @@ const MainContainer = () => {
             isComments={isComments}
           />
         ) : (
-          <Topics
-            posts={redditPost}
-            handleClick={handleCommentsClick}
-          />
+          <Topics posts={redditPost} handleClick={handleCommentsClick} />
         )}
       </div>
     </div>

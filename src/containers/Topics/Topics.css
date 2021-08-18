@@ -10,7 +10,7 @@
 .topic-box {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: var(--background-color);
   width: 100%;
   max-height: fit-content;
   box-shadow: #00000026 1.95px 1.95px 2.6px;
@@ -164,7 +164,7 @@ a:hover {
   font-weight: 500;
   display: flex;
   align-items: center;
-  color: #525252;
+  color: var(--secondary-font-color);
   margin: 1% 2%;
   height: 40px;
   font-size: 16px;
@@ -205,7 +205,7 @@ a:hover {
 
 .comment-info:hover {
   cursor: pointer;
-  background-color: #eef0f2;
+  color: #ff4500;
 }
 
 p {
@@ -244,7 +244,7 @@ p {
 }
 
 .vote-up, .vote-down {
-  color: #525252;
+  color: var(--secondary-font-color);
   font-size: 24px;
   border: none;
   background-color: transparent;
@@ -254,7 +254,7 @@ p {
 
 .vote-up:hover, .vote-down:hover {
   cursor: pointer;
-  background-color: #eef0f2;
+  color: #ff4500;
 }
 
 .vote-up:active {
@@ -317,7 +317,7 @@ video, .img-container iframe {
   vertical-align: middle;
   width: 3px;
   height: 3px;
-  background-color: #525252;
+  background-color: var(--secondary-font-color);
   border-radius: 50%;
 }
 
@@ -325,6 +325,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 8px;
+  color: var(--font-color);
 }
 
 td, th {
@@ -334,7 +335,7 @@ td, th {
 }
 
 th {
-  background-color: #eef0f2;
+  background-color: var(--color-main);
 }
 
 @media screen and (min-width: 640px) {

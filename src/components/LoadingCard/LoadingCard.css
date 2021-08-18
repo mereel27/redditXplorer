@@ -1,6 +1,6 @@
 .loading {
     color: transparent;
-    background: linear-gradient(100deg, #eceff1 30%, #f6f7f8 50%, #eceff1 70%);
+    background: linear-gradient(100deg, var(--loading-color1) 30%, var(--loading-color2) 50%, var(--loading-color1) 70%);
     background-size: 400%;
     animation: loading 1.2s ease-in-out infinite;
     border-radius: 2px;

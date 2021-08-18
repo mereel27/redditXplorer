@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import './Header.css';
 import logo2 from '../../img/logo2.svg';
@@ -9,6 +10,7 @@ import {
   setCategory,
 } from '../../features/redditPostSlice/redditPostSlice';
 import { setShowComments } from '../../features/redditCommentsSlice/redditCommentsSlice';
+import { setTheme, toggleTheme } from '../../utils/utils';
 
 export const Header = () => {
   const term = useSelector(selectSearchTerm);
@@ -27,6 +29,14 @@ export const Header = () => {
     dispatch(setSearchTerm(e.target.value));
   };
 
+  useEffect(() => {
+    if (localStorage.getItem('theme') === 'theme-dark') {
+      setTheme('theme-dark');
+    } else {
+      setTheme('theme-light');
+    }
+  }, []);
+
   return (
     <header className="App-header">
       <div className="logo-container">
@@ -37,6 +47,11 @@ export const Header = () => {
         handleChange={handleChange}
         term={term}
       />
+      <button
+        className="theme-switch"
+        id={localStorage.getItem('theme') === 'theme-dark' ? 'sun' : 'moon'}
+        onClick={toggleTheme}
+      ></button>
     </header>
   );
 };

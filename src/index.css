@@ -1,6 +1,29 @@
+.theme-light {
+  --color-main: #eef0f2;
+  --font-color: #292929;
+  --secondary-font-color: #525252;
+  --background-color: white;
+  --comment-border: #eeeeee;
+  --loading-color1: #eceff1;
+  --loading-color2: #f6f7f8;
+  --icon-position-sun: 32px;
+  --icon-position-moon: 3px;
+}
+.theme-dark {
+  --color-main: #0f0f0f;
+  --font-color: #dadada;
+  --secondary-font-color: #c0c0c0;
+  --background-color: #1d1d1d;
+  --comment-border: #292929;
+  --loading-color1: #131313;
+  --loading-color2: #1f1f1f;
+  --icon-position-sun: 32px;
+  --icon-position-moon: -20px;
+}
+
 html {
   box-sizing: border-box;
-  color: #292929;
+  color: var(--font-color);
   font-size: 14px;
   scroll-behavior: smooth;
 }
@@ -13,7 +36,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #eef0f2;
+  background-color: var(--color-main);
 }
 
 code {

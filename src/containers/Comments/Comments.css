@@ -6,7 +6,7 @@
 }
 
 .comments-box {
-  background-color: white;
+  background-color: var(--background-color);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -54,7 +54,7 @@
 
 .author-info {
   font-size: 12px;
-  color: #525252;
+  color: var(--secondary-font-color);;
   display: flex;
   align-items: center;
   width: 100%;
@@ -75,7 +75,7 @@
 }
 
 blockquote {
-  background-color: #eef0f2;
+  background-color: var(--color-main);
   border-left: 4px solid grey;
   padding: 0.6em 0.5em 0.015em 1em;
   margin: 5px 0;
@@ -125,7 +125,6 @@ pre {
 .score {
   font-size: 12px;
   font-weight: 600;
-  color: #525252;
   padding: 0 10px;
 }
 
@@ -163,9 +162,9 @@ pre {
   padding: 0;
   margin: 0;
   border: none;
+  background-color: var(--comment-border);
 }
 
 .border:hover {
   background-color: #ff4500;
-  cursor: default;
 }

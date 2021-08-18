@@ -51,3 +51,20 @@ export const getVideoUrl = (link) => {
     return `https://www.youtube-nocookie.com/embed/${url[1]}`;
   }
 };
+
+// function to set a given theme/color-scheme
+export const setTheme = themeName => {
+  localStorage.setItem('theme', themeName);
+  document.documentElement.className = themeName;
+}
+
+// function to toggle between light and dark theme
+export const toggleTheme = ({target}) => {
+  if (localStorage.getItem('theme') === 'theme-dark'){
+      setTheme('theme-light');
+      target.id = 'moon';
+  } else {
+      setTheme('theme-dark');
+      target.id = 'sun';
+  }
+}
