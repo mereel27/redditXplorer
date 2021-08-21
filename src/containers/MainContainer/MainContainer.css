@@ -18,7 +18,7 @@
   display: flex;
   overflow: hidden;
   padding: 0 2%;
-  box-shadow: #00000026 1.95px 1.95px 2.6px;
+  /* box-shadow: #00000026 0px 1px 0px; */
 }
 
 .top-nav-bar {
@@ -37,12 +37,16 @@
 .top-nav-container span {
   display: flex;
   align-items: center;
-  height: 70%;
+  height: 60%;
   font-weight: 500;
   user-select: none;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 0 10px;
+}
+
+.top-nav-container span:last-child {
+  margin-right: 20px;
 }
 
 .top-nav-container span:hover {
@@ -57,6 +61,7 @@
 
 .selected {
   background-color: #ff4500;
+  box-shadow: #ff440063 0px 1px 5px 1px;
   color: white;
 }
 
@@ -73,7 +78,7 @@
 }
 
 select {
-  height: 70%;
+  height: 60%;
   box-sizing: border-box;
   outline: none;
   background-color: transparent;
@@ -85,9 +90,8 @@ select {
   cursor: pointer;
   line-height: inherit;
   text-align-last: center;
-  border-radius: 10px;
+  border-radius: 20px;
   flex-grow: 0;
-  margin-left: -10px;
   user-select: none;
 }
 
@@ -139,10 +143,14 @@ select,
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 20px;
   border: none;
   background-color: #ff4500;
-  box-shadow: #00000026 1.95px 1.95px 2.6px;
+  box-shadow: #ff440063 0px 1px 5px 1px;
+}
+
+.red-button:hover {
+  box-shadow: #ff440063 0px 1px 5px 3px;
 }
 
 .red-button:active {
@@ -189,7 +197,7 @@ select,
   }
 
   .top-nav-container {
-    border-radius: 10px;
+    border-radius: 50px;
   }
 }
 

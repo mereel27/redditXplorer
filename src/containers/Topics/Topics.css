@@ -13,10 +13,15 @@
   background-color: var(--background-color);
   width: 100%;
   max-height: fit-content;
-  box-shadow: #00000026 1.95px 1.95px 2.6px;
+  /* box-shadow: #00000026 1.95px 1.95px 2.6px; */
+  /* box-shadow: #00000011 0px 1px 10px 1px; */
   margin-bottom: 10px;
   padding-top: 1.1rem;
 }
+
+/* .topic-box:hover {
+ box-shadow: #ff44007c 0px 0px 1px 1px;
+} */
 
 .topic-box > :not(.flair-text) {
   line-height: 1.3em;
@@ -286,15 +291,6 @@ p {
 
 video, .img-container iframe {
   background-color: black;
-}
-
-.twitter-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  text-align: center;
-  width: 100%;
-  height: 100%;
 }
 
 .image-gallery-left-nav .image-gallery-svg, .image-gallery-right-nav .image-gallery-svg {

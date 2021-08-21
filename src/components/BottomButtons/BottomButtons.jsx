@@ -1,13 +1,7 @@
 export const BottomButtons = ({ moreClick, loading, ready, isMore }) => {
+  
   return (
     <>
-      <button
-        className="red-button hidden"
-        id="to-top-button"
-        onClick={() => window.scrollTo(0, 0)}
-      >
-        <i className="bi bi-triangle-fill"></i>
-      </button>
       { loading ? (
       <div id="loading">
         <div id="loading-img"></div>

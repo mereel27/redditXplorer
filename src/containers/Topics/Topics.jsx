@@ -1,4 +1,3 @@
-import React from 'react';
 import './Topics.css';
 import { TopicCard } from '../../components/TopicCard/TopicCard';
 import { useSelector, useDispatch } from 'react-redux';

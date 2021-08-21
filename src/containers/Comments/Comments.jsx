@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './Comments.css';
 import {
@@ -18,7 +17,7 @@ import { LoadingCard } from '../../components/LoadingCard/LoadingCard';
 import { BottomButtons } from '../../components/BottomButtons/BottomButtons';
 import { Replies } from '../../components/Replies/Replies';
 
-export const Comments = ({ posts, getVideoUrl, isComments }) => {
+const Comments = ({ posts, getVideoUrl, isComments }) => {
   const comments = useSelector(selectAllComments);
   const id = useSelector(selectPostId);
   const avatars = useSelector(selectAvatars);
@@ -77,3 +76,5 @@ export const Comments = ({ posts, getVideoUrl, isComments }) => {
     </div>
   );
 };
+
+export default Comments;

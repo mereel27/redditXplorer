@@ -1,7 +1,7 @@
-import ReactPlayer from 'react-player/lazy';
-import ImageGallery from 'react-image-gallery';
+import { lazy, Suspense } from 'react';
 import avatar from '../../img/avatar.webp';
 import { getTime, shortNumber, decode, getImgUrls, getVideoUrl } from '../../utils/utils';
+import ReactPlayer from 'react-player/file';
 
 export const TopicCard = ({
   index,
@@ -11,6 +11,7 @@ export const TopicCard = ({
   isComments
 }) => {
   const imgClass = isComments ? 'full-img' : 'compact-img';
+  const ImageGallery = lazy(() => import('react-image-gallery'));
 
   return (
     <div key={index} className="topic-box">
@@ -76,8 +77,8 @@ export const TopicCard = ({
 
         {post.is_video && post.media && (
           <div
-            className="yt-container"
-            style={{ '--aspect-ratio': '3 / 4' }}
+            className="video-container"
+            style={{ '--aspect-ratio': '3/4' }}
           >
             <ReactPlayer
               className="react-player"
@@ -96,9 +97,9 @@ export const TopicCard = ({
             <div className="img-container">
               <video
                 src={post.preview.reddit_video_preview.fallback_url}
+                autoPlay
+                muted
                 loop
-                controls
-                preload="meta"
               ></video>
             </div>
           )}
@@ -107,7 +108,7 @@ export const TopicCard = ({
           post.media_embed &&
           post.media_embed.content && (
             <div
-              className="yt-container"
+              className="img-container"
               dangerouslySetInnerHTML={{
                 __html: decode(post.media_embed.content),
               }}
@@ -116,11 +117,13 @@ export const TopicCard = ({
 
         {post.gallery_data && (
           <div className="img-container">
-            <ImageGallery
-              items={getImgUrls(post.gallery_data.items, post.media_metadata)}
-              lazyLoad={true}
-              showIndex={true}
-            />
+            <Suspense fallback={<div className="loading img-loading"></div>}>
+              <ImageGallery
+                items={getImgUrls(post.gallery_data.items, post.media_metadata)}
+                lazyLoad={true}
+                showIndex={true}
+              />
+            </Suspense>
           </div>
         )}
         {post.domain.includes('yout') && (

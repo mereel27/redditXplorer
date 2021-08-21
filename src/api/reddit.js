@@ -43,7 +43,7 @@ export const getAvatars = async (data) => {
 };
 
 export const getPostData = async (permalink) => {
-  const response = await fetch(`${API_ROOT}${permalink}.json`);
+  const response = await fetch(`${API_ROOT}${permalink}.json?depth=3`);
   const json = await response.json();
   const data = json[1].data.children;
 
@@ -101,7 +101,7 @@ export const getNextPage = async (page, category) => {
 export const getNextComments = async (idList, permalink) => {
   const commentsList = await Promise.all(
     idList.map(async (link) => {
-      const commentData = await fetch(`${API_ROOT}${permalink}${link}.json`);
+      const commentData = await fetch(`${API_ROOT}${permalink}${link}.json?depth=3`);
       const jsonCommentData = await commentData.json();
       if (jsonCommentData[1].data.children.length > 0) {
         return jsonCommentData[1].data.children[0];

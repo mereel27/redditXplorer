@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MainContainer.css';
 import {
@@ -15,13 +15,14 @@ import {
 } from '../../features/redditCommentsSlice/redditCommentsSlice';
 import { Navigation } from '../../components/Navigation/Navigation';
 import { Topics } from '../Topics/Topics';
-import { Comments } from '../Comments/Comments';
+/* import Comments from '../Comments/Comments'; */
 
 const MainContainer = () => {
   const redditPost = useSelector(selectPosts);
   const dispatch = useDispatch();
   const isComments = useSelector(showComments);
   const category = useSelector(selectedCategory);
+  const Comments = lazy(() => import('../Comments/Comments'));
 
   useEffect(() => {
     dispatch(fetchPosts(category));
@@ -76,15 +77,24 @@ const MainContainer = () => {
       />
       <div className="content-box">
         {isComments ? (
-          <Comments
-            posts={redditPost}
-            handleClick={handleCommentsClick}
-            isComments={isComments}
-          />
+          <Suspense fallback={<div className="loading img-loading"></div>}>
+            <Comments
+              posts={redditPost}
+              handleClick={handleCommentsClick}
+              isComments={isComments}
+            />
+          </Suspense>
         ) : (
           <Topics posts={redditPost} handleClick={handleCommentsClick} />
         )}
       </div>
+      <button
+        className="red-button hidden"
+        id="to-top-button"
+        onClick={() => window.scrollTo(0, 0)}
+      >
+        <i className="bi bi-triangle-fill"></i>
+      </button>
     </div>
   );
 };
