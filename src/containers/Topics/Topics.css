@@ -318,7 +318,9 @@ video, .img-container iframe {
 }
 
 table {
-  width: 100%;
+  display: block;
+  overflow: auto;
+  max-width: 100%;
   border-collapse: collapse;
   margin-bottom: 8px;
   color: var(--font-color);
