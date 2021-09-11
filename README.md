@@ -1,4 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Description
+This is an application for [Reddit](https://www.reddit.com/) built with React and Redux.
+
+This application allows users to view and search posts and comments provided by the [reddit JSON API](https://github.com/reddit-archive/reddit/wiki/JSON).
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) 
+template.
+
+------------>[Live Preview](https://redditxplorer.netlify.app/)<---------------
 
 ## Available Scripts
 
