@@ -1,5 +1,5 @@
 # Description
-This is an application for [Reddit](https://www.reddit.com/) built with React and Redux.
+[Reddit](https://www.reddit.com/) client built with React and Redux.
 
 This application allows users to view and search posts and comments provided by the [reddit JSON API](https://github.com/reddit-archive/reddit/wiki/JSON).
 
